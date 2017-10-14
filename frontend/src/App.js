@@ -51,6 +51,20 @@ class App extends Component {
   }
 
   componentDidMount() {
+    return new Promise((resolve, reject) => {
+      fetch('/api/initiatives')
+      .then(response => {
+        if (response.ok) {
+          return response.json().then(json => {
+            console.log(json)
+            this.setState({ initiatives: json._embedded.initiatives })
+          })
+        } else  {
+          console.log(response.status)
+        }
+      })
+      .catch((error) => console.log('api error:', JSON.stringify(error)))
+    })
   }
 
   render() {
