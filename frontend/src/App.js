@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Jumbotron } from 'react-bootstrap';
+import { Button, Jumbotron } from 'react-bootstrap';
 import './App.css'
 
-
+import AddInitiativeForm from './modules/AddInitiativeForm'
 import InitiativesList from './modules/InitiativesList'
 
 class App extends Component {
@@ -10,7 +10,22 @@ class App extends Component {
     super(props)
     this.state = {
       initiatives: [],
+      addItemOpen: false,
     }
+  }
+
+  addInitiative(initiative) {
+    this.setState({
+      initiatives: [...this.state.initiatives, initiative]
+    })
+  }
+
+  openAddItemForm() {
+    this.setState({ addItemOpen: true })
+  }
+
+  closeAddItemForm() {
+    this.setState({ addItemOpen: false })
   }
 
   componentDidMount() {
@@ -56,7 +71,16 @@ class App extends Component {
             <h1 className="appTitle">zróbmy.waw.pl</h1>
           </header>
         </Jumbotron>
+        <Button
+          onClick={() => this.openAddItemForm()}
+        >
+          Zgłość swoją inicjatywę!
+        </Button>
         <InitiativesList initiatives={this.state.initiatives} />
+        {this.state.addItemOpen && <AddInitiativeForm
+          onClose={()=> this.closeAddItemForm()}
+          onSubmit={(initiative) => this.addInitiative(initiative)}
+        />}
       </span>
     );
   }
