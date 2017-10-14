@@ -15,20 +15,35 @@ class Initiative extends Component {
   renderModal() {
     const { item } = this.props
     return (
-      //todo add image
         <div id="modal" className="modal">
           <div className="modal-background"></div>
           <div className="modal-content box">
-            <p>Lokalizacja: {item.location}</p>
-            <p>Autor: {item.author}</p>
-            <p>Opis: {item.description}</p>
-            <a href={item.fbEvent}>Link do wydarzenia</a>
-            <button onClick={() => this.props.react(item.id, 'likes')}>
-                Like
-            </button>
-            <button onClick={() => this.props.react(item.id, 'joins')}>
-              Join
-            </button>
+            <div className="card">
+              <div className="card-image">
+                <figure className="image is-4by3">
+                  <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image" />
+                </figure>
+              </div>
+              <header className="card-header">
+                <p class="card-header-title">
+                  {item.name}
+                </p>
+              </header>
+              <div className="card-content">
+                <div className="content">
+                  <p>{item.description}</p>
+                  <p>{item.time}</p>
+                  <a href={item.fbEvent}>Link do wydarzenia</a>
+                  <p>Lokalizacja: {item.location}</p>
+                  <p className="title is-5">Author: {item.author}</p>
+                </div>
+              </div>
+              <footer className="card-footer">
+                <a href="#" className="card-footer-item" onClick={(e) => this.closeItem(e)}>Zamknij</a>
+                <a href="#" className="card-footer-item" onClick={() => this.props.react(item.id, 'likes')}>Like</a>
+                <a href="#" className="card-footer-item" onClick={() => this.props.react(item.id, 'joins')}>Join</a>
+              </footer>
+            </div>
           </div>
           <button className="modal-close is-large" aria-label="close" onClick={(e) => this.closeItem(e)}></button>
         </div>
