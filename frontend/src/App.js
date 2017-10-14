@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { Button, Jumbotron } from 'react-bootstrap';
-import './App.css'
 
 import AddInitiativeForm from './modules/AddInitiativeForm'
 import InitiativesList from './modules/InitiativesList'
+import './App.css'
 
 class App extends Component {
   constructor(props) {
@@ -65,23 +64,31 @@ class App extends Component {
 
   render() {
     return (
-      <span>
-        <Jumbotron className='App-intro'>
-          <header>
-            <h1 className="appTitle">zróbmy.waw.pl</h1>
-          </header>
-        </Jumbotron>
-        <Button
-          onClick={() => this.openAddItemForm()}
-        >
-          Zgłość swoją inicjatywę!
-        </Button>
+      <div>
+        <section className="hero is-info has-bg-image">
+          <div className="hero-body">
+            <div className="container">
+              <h1 className="title">
+                Lokalsi
+              </h1>
+              <h2 className="subtitle">
+                Inicjatywy sąsiedzkie
+              </h2>
+              <a className="button is-primary" onClick={() => this.openAddItemForm()}>
+                Zgłość swoją inicjatywę!
+              </a>
+            </div>
+          </div>
+        </section>
+
         <InitiativesList initiatives={this.state.initiatives} />
-        {this.state.addItemOpen && <AddInitiativeForm
-          onClose={()=> this.closeAddItemForm()}
-          onSubmit={(initiative) => this.addInitiative(initiative)}
-        />}
-      </span>
+        {this.state.addItemOpen &&
+          <AddInitiativeForm
+            onClose={()=> this.closeAddItemForm()}
+            onSubmit={(initiative) => this.addInitiative(initiative)}
+          />
+        }
+      </div>
     );
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, ListGroupItem, Modal } from 'react-bootstrap'
+import { Button, Modal } from 'react-bootstrap'
 
 class Initiative extends Component {
 
@@ -38,15 +38,18 @@ class Initiative extends Component {
   render() {
     const { item } = this.props
     return (
-      <div>
-        <ListGroupItem
-          header={item.name}
-          onClick={() => this.showItem()}
-        >
-          {item.location}
-          {item.time}
-          {item.author}
-        </ListGroupItem>
+      <div className="column is-quarter"
+        header={item.name}
+        onClick={() => this.showItem()}
+      >
+        <div className="box">
+          <figure className="image is-square">
+            <img alt="Initiative" src="http://bulma.io/images/placeholders/256x256.png" />
+          </figure>
+          <strong>{item.location}</strong>
+          <p>{item.time}</p>
+          <p>{item.author}</p>
+        </div>
         {this.state.showDetails && this.renderModal()}
       </div>
     )
