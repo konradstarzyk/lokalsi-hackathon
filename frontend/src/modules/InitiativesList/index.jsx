@@ -11,6 +11,9 @@ class InitiativesList extends Component {
                       key={initiative.name}
                       item={initiative}
                       react={(id, reaction) => this.props.reactToInitiative(id, reaction)}
+                      visible={this.props.visibleInitiative === initiative.id}
+                      showItem={(id) => this.props.showItem(id)}
+                      closeItem={() => this.props.closeItem()}
                     />
     )
   }

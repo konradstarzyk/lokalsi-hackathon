@@ -13,6 +13,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      visibleInitiative: null,
       initiatives: {
         1: { name: 'hello' }
       },
@@ -111,6 +112,9 @@ class App extends Component {
         <InitiativesList
           initiatives={initiativesList}
           reactToInitiative={(id, reaction) => this.reactToInitiative(id, reaction)}
+          visibleInitiative={this.state.visibleInitiative}
+          showItem={(id) => this.setState({ visibleInitiative: id })}
+          closeItem={() => this.setState({ visibleInitiative: null })}
         />
         {this.state.addItemOpen && <AddInitiativeForm
           onClose={()=> this.closeAddItemForm()}

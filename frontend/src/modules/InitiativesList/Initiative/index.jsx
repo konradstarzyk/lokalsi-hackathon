@@ -9,11 +9,11 @@ class Initiative extends Component {
   }
 
   showItem() {
-    this.setState({ showDetails: true })
+    this.props.showItem(this.props.item.id)
   }
 
   closeItem() {
-    this.setState({ showDetails: false })
+    this.props.closeItem()
   }
 
   renderModal() {
@@ -57,7 +57,7 @@ class Initiative extends Component {
           Likes: {item.likes}
           Joins: {item.joins}
         </ListGroupItem>
-        {this.state.showDetails && this.renderModal()}
+        {this.props.visible && this.renderModal()}
       </div>
     )
   }
