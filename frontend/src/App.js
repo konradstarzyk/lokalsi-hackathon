@@ -112,7 +112,7 @@ class App extends Component {
         </Button>
         <InitiativesMap
           isMarkerShown
-          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyADHkRvp_mX4_MaHLaE0LSisasSkWibRaY"
+          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyD92FYJXNHVPKIF_y6sZ79zl0ufqupLwx8"
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `400px`, width: `90%`, margin: 'auto' }} />}
           mapElement={<div style={{ height: `100%` }} />}
