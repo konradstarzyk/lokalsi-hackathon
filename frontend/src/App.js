@@ -100,13 +100,13 @@ class App extends Component {
 
     return (
       <div>
-        <section className="hero is-light has-bg-image">
+        <section className="hero has-bg-image">
           <div className="hero-body">
             <div className="container">
               <figure id="logo" className="image">
                 <img alt="Initiative" src={logo} />
               </figure>
-              <a id="add-initiative-button" className="button is-link pull-right" onClick={() => this.openAddItemForm()}>
+              <a id="add-initiative-button" className="button is-link is-large pull-right" onClick={() => this.openAddItemForm()}>
                 Zgłość swoją inicjatywę!
               </a>
             </div>
@@ -123,7 +123,7 @@ class App extends Component {
           isMarkerShown
           googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyD92FYJXNHVPKIF_y6sZ79zl0ufqupLwx8"
           loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `400px`, width: `90%`, margin: 'auto' }} />}
+          containerElement={<div className="container" style={{ height: `400px`, width: `90%`, margin: 'auto' }} />}
           mapElement={<div style={{ height: `100%` }} />}
           items={initiativesList}
           showItem={(id) => this.setState({ visibleInitiative: id })}
