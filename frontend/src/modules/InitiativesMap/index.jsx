@@ -4,7 +4,6 @@ import { GoogleMap, Marker, withGoogleMap, withScriptjs } from 'react-google-map
 class InitiativesMap extends Component {
 
   renderMarkers() {
-    console.log(this.props.items)
     return this.props.items.map(item =>
       <Marker
         key={`${item.lat}-${item.lng}-${item.name}`}
