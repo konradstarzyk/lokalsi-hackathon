@@ -16,7 +16,7 @@ class InitiativesList extends Component {
   render() {
     return (
       <section className="section container">
-        <div className="columns">
+        <div className="columns is-multiline">
           {this.renderInitiatives()}
         </div>
       </section>

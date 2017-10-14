@@ -23,8 +23,10 @@ class App extends Component {
     this.setState({ addItemOpen: true })
   }
 
-  closeAddItemForm() {
+  closeAddItemForm(e) {
+    e.stopPropagation()
     this.setState({ addItemOpen: false })
+    document.getElementsByClassName("is-active")[0].classList.remove("is-active")
   }
 
   componentDidMount() {
@@ -35,6 +37,7 @@ class App extends Component {
         time: '28.12.2017',
         author: 'Andrzej',
         event: 'www.facebook.com',
+        image: 'http://bulma.io/images/placeholders/256x256.png'
       },
       { name: 'Piaskownica',
         description: 'Przy ulicy Kubusia Puchatka lezy sporo piasku, może zrobilibyśmy z tego piaskownicę?',
@@ -42,6 +45,8 @@ class App extends Component {
         time: 'Maj 2018',
         author: 'Aneta',
         event: 'www.facebook.com',
+        image: 'http://bulma.io/images/placeholders/256x256.png'
+
       },
       { name: 'Plac zabaw',
         description: 'Posiadam sporo drewnianych elementów, z których można by zrobić plac zabaw dla dzieciaków. Zapraszam do kontaktu.',
@@ -49,6 +54,7 @@ class App extends Component {
         time: 'Czerwiec 2018',
         author: 'Tomek',
         event: 'www.facebook.com',
+        image: 'http://bulma.io/images/placeholders/256x256.png'
       },
       { name: 'Kino letnie',
         description: 'W naszym podwórku przy ulicy Kinowej można by wyświetlać filmy w ramach sąsiedzkiego kina letniego. Jedna ściana idealnie się do tego nadaje. Zapraszam do wspólnej inicjatywy.',
@@ -56,7 +62,8 @@ class App extends Component {
         time: 'Sierpień 2018',
         author: 'Staszek',
         event: 'www.facebook.com',
-      },
+        image: 'http://bulma.io/images/placeholders/256x256.png'
+      }
     ]
 
     this.setState({ initiatives })
@@ -84,7 +91,7 @@ class App extends Component {
         <InitiativesList initiatives={this.state.initiatives} />
         {this.state.addItemOpen &&
           <AddInitiativeForm
-            onClose={()=> this.closeAddItemForm()}
+            onClose={(e)=> this.closeAddItemForm(e)}
             onSubmit={(initiative) => this.addInitiative(initiative)}
           />
         }

@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
-import {
-  Button,
-  FormGroup,
-  FormControl,
-  Modal,
-} from 'react-bootstrap'
+
+import './styles.css'
 
 class AddInitiativeForm extends Component {
 
@@ -23,49 +19,47 @@ class AddInitiativeForm extends Component {
 
   render() {
     return (
-      <Modal.Dialog>
-      <Modal.Header>
-        <Modal.Title>Dodaj swoją inicjatywę!</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <form>
-          <FormGroup>
-            <FormControl
-              type='text'
-              placeholder='Nazwa inicjatywy'
-              onChange={(e) => this.handleChange('name', e.target.value)}
-            />
-            <FormControl
-              type='text'
-              placeholder='Lokalizacja'
-              onChange={(e) => this.handleChange('location', e.target.value)}
-            />
-            <FormControl
-              type='text'
-              placeholder='Czas'
-              onChange={(e) => this.handleChange('time', e.target.value)}
-            />
-            <FormControl
-              type='text'
-              placeholder='Opis'
-              onChange={(e) => this.handleChange('description', e.target.value)}
-            />
-            <FormControl
-              type='text'
-              placeholder='Facebook event'
-              onChange={(e) => this.handleChange('event', e.target.value)}
-            />
-          </FormGroup>
-        </form>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={() => this.handleSubmit()}>Zgłoś!</Button>
-        <Button onClick={() => this.props.onClose()}>Close</Button>
-      </Modal.Footer>
-     </Modal.Dialog>
+      <div id="add-initiative-modal" className="modal is-active">
+        <div className="modal-background"></div>
+        <div className="modal-content box">
+          <div className="field">
+            <label className="label">Nazwa inicjatywy</label>
+            <div className="control">
+              <input className="input" type="text" placeholder="" onChange={(e) => this.handleChange('name', e.target.value)} />
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Czas</label>
+            <div className="control">
+              <input className="input" type="text" placeholder="Text input" onChange={(e) => this.handleChange('time', e.target.value)} />
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Opis</label>
+            <div className="control">
+              <input className="input" type="text" placeholder="Text input" onChange={(e) => this.handleChange('description', e.target.value)} />
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Facebook event</label>
+            <div className="control">
+              <input className="input" type="text" placeholder="Text input" onChange={(e) => this.handleChange('event', e.target.value)} />
+            </div>
+          </div>
+          <div className="field is-grouped space-between">
+            <p className="control">
+              <a className="button is-danger" onClick={(e) => this.props.onClose(e)}>Zamknij</a>
+            </p>
+            <p className="control">
+              <a className="button is-primary" onClick={() => this.handleSubmit()}>Zgłoś!</a>
+            </p>
+          </div>
+        </div>
+        <button className="modal-close is-large" aria-label="close" onClick={(e) => this.props.onClose(e)}></button>
+      </div>
+
     )
   }
-
 }
 
 export default AddInitiativeForm
