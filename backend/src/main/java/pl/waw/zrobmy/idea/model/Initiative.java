@@ -1,4 +1,4 @@
-package pl.waw.zrobmy.idea.repository;
+package pl.waw.zrobmy.idea.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +10,8 @@ import java.io.Serializable;
  * Created by konrad on 14.10.2017.
  */
 @Entity
-@Table(name = "invoice")
-public class Idea implements Serializable {
+@Table(name = "initiative")
+public class Initiative implements Serializable {
 
 	@Id
 	@Column(name = "id")
