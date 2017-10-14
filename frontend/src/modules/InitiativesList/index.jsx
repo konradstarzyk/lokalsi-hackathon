@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { ListGroup } from 'react-bootstrap'
 
 import Initiative from './Initiative'
 
@@ -15,9 +16,9 @@ class InitiativesList extends Component {
 
   render() {
     return (
-      <ul>
+      <ListGroup>
         {this.renderInitiatives()}
-      </ul>
+      </ListGroup>
     )
   }
 

@@ -3,3 +3,8 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.jumbotron h1 .appTitle {
+  font-size: 1.5em;
+  color: white;
+}

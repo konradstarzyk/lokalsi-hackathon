@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
+import { Grid, Jumbotron } from 'react-bootstrap';
 import './App.css'
+
 
 import InitiativesList from './modules/InitiativesList'
 
@@ -37,16 +38,14 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="zrobmy.waw.pl">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to zrobmy.waw.pl</h1>
+      <span>
+      <Jumbotron className='App-intro'>
+        <header>
+          <h1 className="appTitle">zróbmy.waw.pl</h1>
         </header>
-        <p className="App-intro">
-          Zróbmy w Warszawie
-        </p>
-        <InitiativesList initiatives={this.state.initiatives} />
-      </div>
+      </Jumbotron>
+      <InitiativesList initiatives={this.state.initiatives} />
+      </span>
     );
   }
 }
