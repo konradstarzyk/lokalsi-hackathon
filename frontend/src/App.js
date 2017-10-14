@@ -16,7 +16,12 @@ class App extends Component {
 
   addInitiative(initiative) {
     return new Promise((resolve, reject) => {
-      fetch('/api/initiatives', { method: 'POST', body: JSON.stringify(initiative) })
+      fetch('/api/initiatives',
+        {
+          method: 'POST',
+          body: JSON.stringify(initiative),
+          headers: { 'Content-Type': 'application/json' }
+        })
       .then(response => {
         if (response.ok) {
           this.setState({
@@ -40,7 +45,9 @@ class App extends Component {
 
   componentDidMount() {
     return new Promise((resolve, reject) => {
-      fetch('/api/initiatives')
+      fetch('/api/initiatives', {
+        headers: { 'Accept': 'application/json' },
+      })
       .then(response => {
         if (response.ok) {
           return response.json().then(json => {
