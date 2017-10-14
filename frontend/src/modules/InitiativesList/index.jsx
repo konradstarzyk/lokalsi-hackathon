@@ -24,4 +24,8 @@ class InitiativesList extends Component {
 
 }
 
+InitiativesList.defaultProps = {
+  initiatives: []
+}
+
 export default InitiativesList
