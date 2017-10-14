@@ -16,7 +16,7 @@ class App extends Component {
 
   addInitiative(initiative) {
     return new Promise((resolve, reject) => {
-      fetch('/api/initiatives', { method: 'POST', body: initiative })
+      fetch('/api/initiatives', { method: 'POST', body: JSON.stringify(initiative) })
       .then(response => {
         if (response.ok) {
           this.setState({
