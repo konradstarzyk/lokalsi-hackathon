@@ -1,4 +1,14 @@
 .has-bg-image {
-  background: url('assets/Lokalsi.png') no-repeat right;
-  background-size: inherit;
+  background: url('assets/warsaw.jpg') no-repeat right;
+  background-size: cover;
+}
+
+#logo {
+  width: 256px;
+  height: 256px;
+  margin-bottom: 1rem;
+}
+
+#add-initiative-button {
+  width: 256px;
 }

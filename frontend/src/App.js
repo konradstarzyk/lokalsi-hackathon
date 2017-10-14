@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import AddInitiativeForm from './modules/AddInitiativeForm'
 import InitiativesList from './modules/InitiativesList'
 import InitiativesMap from './modules/InitiativesMap'
+import logo from './assets/Lokalsi.png'
 import './App.css'
 
 const initiativesById = (initiatives = []) =>
@@ -99,21 +100,25 @@ class App extends Component {
 
     return (
       <div>
-        <section className="hero is-info has-bg-image">
+        <section className="hero is-light has-bg-image">
           <div className="hero-body">
             <div className="container">
-              <h1 className="title">
-                Lokalsi
-              </h1>
-              <h2 className="subtitle">
-                Inicjatywy sąsiedzkie
-              </h2>
-              <a className="button is-primary" onClick={() => this.openAddItemForm()}>
+              <figure id="logo" className="image">
+                <img alt="Initiative" src={logo} />
+              </figure>
+              <a id="add-initiative-button" className="button is-link pull-right" onClick={() => this.openAddItemForm()}>
                 Zgłość swoją inicjatywę!
               </a>
             </div>
           </div>
         </section>
+        <InitiativesList
+          initiatives={initiativesList}
+          reactToInitiative={(id, reaction) => this.reactToInitiative(id, reaction)}
+          visibleInitiative={this.state.visibleInitiative}
+          showItem={(id) => this.setState({ visibleInitiative: id })}
+          closeItem={() => this.setState({ visibleInitiative: null })}
+        />
         <InitiativesMap
           isMarkerShown
           googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyD92FYJXNHVPKIF_y6sZ79zl0ufqupLwx8"
@@ -122,13 +127,6 @@ class App extends Component {
           mapElement={<div style={{ height: `100%` }} />}
           items={initiativesList}
           showItem={(id) => this.setState({ visibleInitiative: id })}
-        />
-        <InitiativesList
-          initiatives={initiativesList}
-          reactToInitiative={(id, reaction) => this.reactToInitiative(id, reaction)}
-          visibleInitiative={this.state.visibleInitiative}
-          showItem={(id) => this.setState({ visibleInitiative: id })}
-          closeItem={() => this.setState({ visibleInitiative: null })}
         />
         {this.state.addItemOpen &&
           <AddInitiativeForm
