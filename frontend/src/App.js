@@ -25,7 +25,8 @@ class App extends Component {
       .then(response => {
         if (response.ok) {
           this.setState({
-            initiatives: [...this.state.initiatives, initiative]
+            initiatives: [...this.state.initiatives, initiative],
+            addItemOpen: false,
           })
         } else  {
           console.log(response.status)
