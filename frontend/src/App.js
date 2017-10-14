@@ -2,20 +2,84 @@ import React, { Component } from 'react'
 
 import AddInitiativeForm from './modules/AddInitiativeForm'
 import InitiativesList from './modules/InitiativesList'
+import InitiativesMap from './modules/InitiativesMap'
 import './App.css'
+
+const initiativesById = (initiatives = []) =>
+  initiatives.reduce((obj, init) => ({ ...obj, [init.id]: init }), {})
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      initiatives: [],
+      visibleInitiative: null,
+      initiatives: {
+        1: { name: 'hello' }
+      },
       addItemOpen: false,
     }
   }
 
+  componentDidMount() {
+    return new Promise((resolve, reject) => {
+      fetch('/api/initiatives', {
+        headers: { 'Accept': 'application/json' },
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.json().then(json => {
+            const initiatives = json._embedded.initiatives
+            this.setState({ initiatives: initiativesById(initiatives) })
+          })
+        } else  {
+          console.log(response.status)
+        }
+      })
+      .catch((error) => console.log('error:', JSON.stringify(error)))
+    })
+  }
+
   addInitiative(initiative) {
-    this.setState({
-      initiatives: [...this.state.initiatives, initiative]
+    return new Promise((resolve, reject) => {
+      fetch('/api/initiatives',
+        {
+          method: 'POST',
+          body: JSON.stringify(initiative),
+          headers: { 'Content-Type': 'application/json' }
+        })
+      .then(response => {
+        if (response.ok) {
+          return response.json().then(json => {
+            this.setState({
+              initiatives: {...this.state.initiatives, [json.id]: json },
+              addItemOpen: false,
+            })
+          })
+        } else  {
+          console.log(response.status)
+        }
+      })
+      .catch((error) => console.log('error:', JSON.stringify(error)))
+    })
+  }
+
+  reactToInitiative(id, reaction) {
+    return new Promise((resolve, reject) => {
+      fetch(`/api/initiatives/${id}/${reaction}`, {
+        method: 'POST'
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.json().then(json => {
+            this.setState({
+              initiatives: { ...this.state.initiatives, [id]: json },
+            })
+          })
+        } else  {
+          console.log(response.status)
+        }
+      })
+      .catch((error) => console.log('error:', JSON.stringify(error)))
     })
   }
 
@@ -29,47 +93,10 @@ class App extends Component {
     document.getElementsByClassName("is-active")[0].classList.remove("is-active")
   }
 
-  componentDidMount() {
-    const initiatives = [
-      { name: 'Lodowisko',
-        description: 'Zróbmy razem lodowisko dla dzieciaków',
-        location: 'Warszawa Ursynów',
-        time: '28.12.2017',
-        author: 'Andrzej',
-        event: 'www.facebook.com',
-        image: 'http://bulma.io/images/placeholders/256x256.png'
-      },
-      { name: 'Piaskownica',
-        description: 'Przy ulicy Kubusia Puchatka lezy sporo piasku, może zrobilibyśmy z tego piaskownicę?',
-        location: 'Warszawa Mokotów',
-        time: 'Maj 2018',
-        author: 'Aneta',
-        event: 'www.facebook.com',
-        image: 'http://bulma.io/images/placeholders/256x256.png'
-
-      },
-      { name: 'Plac zabaw',
-        description: 'Posiadam sporo drewnianych elementów, z których można by zrobić plac zabaw dla dzieciaków. Zapraszam do kontaktu.',
-        location: 'Warszawa Targówek',
-        time: 'Czerwiec 2018',
-        author: 'Tomek',
-        event: 'www.facebook.com',
-        image: 'http://bulma.io/images/placeholders/256x256.png'
-      },
-      { name: 'Kino letnie',
-        description: 'W naszym podwórku przy ulicy Kinowej można by wyświetlać filmy w ramach sąsiedzkiego kina letniego. Jedna ściana idealnie się do tego nadaje. Zapraszam do wspólnej inicjatywy.',
-        location: 'Warszawa Bemowo',
-        time: 'Sierpień 2018',
-        author: 'Staszek',
-        event: 'www.facebook.com',
-        image: 'http://bulma.io/images/placeholders/256x256.png'
-      }
-    ]
-
-    this.setState({ initiatives })
-  }
-
   render() {
+    const { initiatives } = this.state
+    const initiativesList = Object.keys(initiatives).map(key => initiatives[key])
+
     return (
       <div>
         <section className="hero is-info has-bg-image">
@@ -87,8 +114,22 @@ class App extends Component {
             </div>
           </div>
         </section>
-
-        <InitiativesList initiatives={this.state.initiatives} />
+        <InitiativesMap
+          isMarkerShown
+          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyD92FYJXNHVPKIF_y6sZ79zl0ufqupLwx8"
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `400px`, width: `90%`, margin: 'auto' }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+          items={initiativesList}
+          showItem={(id) => this.setState({ visibleInitiative: id })}
+        />
+        <InitiativesList
+          initiatives={initiativesList}
+          reactToInitiative={(id, reaction) => this.reactToInitiative(id, reaction)}
+          visibleInitiative={this.state.visibleInitiative}
+          showItem={(id) => this.setState({ visibleInitiative: id })}
+          closeItem={() => this.setState({ visibleInitiative: null })}
+        />
         {this.state.addItemOpen &&
           <AddInitiativeForm
             onClose={(e)=> this.closeAddItemForm(e)}
@@ -96,7 +137,7 @@ class App extends Component {
           />
         }
       </div>
-    );
+    )
   }
 }
 

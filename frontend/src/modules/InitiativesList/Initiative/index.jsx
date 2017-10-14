@@ -9,6 +9,7 @@ class Initiative extends Component {
   closeItem(e) {
     e.stopPropagation()
     document.getElementsByClassName("is-active")[0].classList.remove("is-active")
+    this.props.showItem(this.props.item.id)
   }
 
   renderModal() {
@@ -22,6 +23,12 @@ class Initiative extends Component {
             <p>Autor: {item.author}</p>
             <p>Opis: {item.description}</p>
             <a href={item.fbEvent}>Link do wydarzenia</a>
+            <button onClick={() => this.props.react(item.id, 'likes')}>
+                Like
+            </button>
+            <button onClick={() => this.props.react(item.id, 'joins')}>
+              Join
+            </button>
           </div>
           <button className="modal-close is-large" aria-label="close" onClick={(e) => this.closeItem(e)}></button>
         </div>
@@ -42,12 +49,18 @@ class Initiative extends Component {
           <strong>{item.location}</strong>
           <p>{item.time}</p>
           <p>{item.author}</p>
+          <p>Likes: {item.likes}</p>
+          <p>Joins: {item.joins}</p>
         </div>
         {this.renderModal()}
       </div>
     )
   }
 
+}
+
+Initiative.defaultProps = {
+  item: {},
 }
 
 export default Initiative
