@@ -1,16 +1,16 @@
-package pl.waw.zrobmy.idea.model;
+package pl.waw.lokalsi.initiative.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by konrad on 14.10.2017.
  */
 @Entity
 @Table(name = "initiative")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Initiative implements Serializable {
 
 	@Id
@@ -27,15 +27,17 @@ public class Initiative implements Serializable {
 	@Column(name = "location")
 	private String location;
 
-	@JsonFormat(pattern = "YYYYMMDD")
-	@Column(name = "time")
-	private Date time;
-
 	@Column(name = "author")
 	private String author;
 
 	@Column(name = "fb_event")
 	private String fbEvent;
+
+	@Column(name = "likes")
+	private Integer likes = 0;
+
+	@Column(name = "joins")
+	private Integer joins;
 
 	public Long getId() {
 		return id;
@@ -44,7 +46,6 @@ public class Initiative implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public String getName() {
 		return name;
@@ -70,14 +71,6 @@ public class Initiative implements Serializable {
 		this.location = location;
 	}
 
-	public Date getTime() {
-		return time;
-	}
-
-	public void setTime(Date time) {
-		this.time = time;
-	}
-
 	public String getAuthor() {
 		return author;
 	}
@@ -92,5 +85,29 @@ public class Initiative implements Serializable {
 
 	public void setFbEvent(String fbEvent) {
 		this.fbEvent = fbEvent;
+	}
+
+	public void increaseLikes() {
+		likes = likes + 1;
+	}
+
+	public void increaseJoins() {
+		joins = joins + 1;
+	}
+
+	public Integer getLikes() {
+		return likes;
+	}
+
+	public void setLikes(Integer likes) {
+		this.likes = likes;
+	}
+
+	public Integer getJoins() {
+		return joins;
+	}
+
+	public void setJoins(Integer joins) {
+		this.joins = joins;
 	}
 }

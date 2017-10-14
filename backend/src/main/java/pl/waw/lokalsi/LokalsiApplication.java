@@ -1,12 +1,12 @@
-package pl.waw.zrobmy;
+package pl.waw.lokalsi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ZrobmyWWarszawieApplication {
+public class LokalsiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ZrobmyWWarszawieApplication.class, args);
+		SpringApplication.run(LokalsiApplication.class, args);
 	}
 }

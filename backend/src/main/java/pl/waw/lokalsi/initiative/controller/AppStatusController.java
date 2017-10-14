@@ -1,4 +1,4 @@
-package pl.waw.zrobmy.idea.controller;
+package pl.waw.lokalsi.initiative.controller;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;

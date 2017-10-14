@@ -1,9 +1,12 @@
 spring:
   datasource:
-    url: jdbc:h2:./zrobmywwaw
-    username: zrobmywwaw
-    password: zrobmywwaw
+    url: jdbc:h2:file:./lokalsi
+    username: lokalsi
+    password: lokalsi
     driverClassName: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
   data:
     jpa:
       repositories:
@@ -14,6 +17,5 @@ server:
 flyway:
   locations:
     - classpath:/db/migration
-
 
 
