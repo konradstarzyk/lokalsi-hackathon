@@ -6,15 +6,27 @@ import {
   Modal,
 } from 'react-bootstrap'
 
+import InitiativesMap from '../InitiativesMap'
+
 class AddInitiativeForm extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = { item: {} }
   }
 
   handleChange(attr, val) {
     this.setState({ item: {...this.state.item, [attr]: val }})
+  }
+
+  handleLocationChange(e) {
+    this.setState({
+      item: {
+        ...this.state.item,
+        lat: e.latLng.lat(),
+        lng: e.latLng.lng(),
+      }
+    })
   }
 
   handleSubmit() {
@@ -54,6 +66,15 @@ class AddInitiativeForm extends Component {
               type='text'
               placeholder='Inicjator'
               onChange={(e) => this.handleChange('author', e.target.value)}
+            />
+            <InitiativesMap
+              isMarkerShown
+              googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+              loadingElement={<div style={{ height: `100%` }} />}
+              containerElement={<div style={{ height: `400px` }} />}
+              mapElement={<div style={{ height: `100%` }} />}
+              handleMapOnClick={(e) => this.handleLocationChange(e)}
+              items={this.state.item.lat && this.state.item.lng ? [this.state.item] : []}
             />
           </FormGroup>
         </form>
