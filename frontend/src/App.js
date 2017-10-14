@@ -4,6 +4,7 @@ import './App.css'
 
 import AddInitiativeForm from './modules/AddInitiativeForm'
 import InitiativesList from './modules/InitiativesList'
+import InitiativesMap from './modules/InitiativesMap'
 
 const initiativesById = (initiatives = []) =>
   initiatives.reduce((obj, init) => ({ ...obj, [init.id]: init }), {})
@@ -109,6 +110,15 @@ class App extends Component {
         >
           Zgłość swoją inicjatywę!
         </Button>
+        <InitiativesMap
+          isMarkerShown
+          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `400px`, width: `90%`, margin: 'auto' }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+          items={initiativesList}
+          showItem={(id) => this.setState({ visibleInitiative: id })}
+        />
         <InitiativesList
           initiatives={initiativesList}
           reactToInitiative={(id, reaction) => this.reactToInitiative(id, reaction)}

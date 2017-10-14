@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
-import { GoogleMap, Marker, withGoogleMap, withScriptjs } from "react-google-maps"
+import { GoogleMap, Marker, withGoogleMap, withScriptjs } from 'react-google-maps'
 
 class InitiativesMap extends Component {
 
   renderMarkers() {
-    console.log(this.props)
+    console.log(this.props.items)
     return this.props.items.map(item =>
       <Marker
-        key={`${item.lat}-${item.lng}`}
-        position={{ lat: item.lat, lng: item.lng }}
+        key={`${item.lat}-${item.lng}-${item.name}`}
+        onClick={this.props.showItem
+          ? () => this.props.showItem(item.id)
+          : undefined }
+        position={{ lat: (item.lat || 52.229), lng: (item.lng || 21.0122) }}
       />
     )
   }
