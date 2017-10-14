@@ -49,11 +49,6 @@ class AddInitiativeForm extends Component {
             />
             <FormControl
               type='text'
-              placeholder='Lokalizacja'
-              onChange={(e) => this.handleChange('location', e.target.value)}
-            />
-            <FormControl
-              type='text'
               placeholder='Opis'
               onChange={(e) => this.handleChange('description', e.target.value)}
             />
