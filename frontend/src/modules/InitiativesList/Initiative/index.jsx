@@ -29,6 +29,16 @@ class Initiative extends Component {
               <a href={item.fbEvent}>Link do wydarzenia</a>
             </Modal.Body>
             <Modal.Footer>
+              <button
+                onClick={() => this.props.react(item.id, 'likes')}
+              >
+                Like
+              </button>
+              <button
+                onClick={() => this.props.react(item.id, 'joins')}
+              >
+                Join
+              </button>
               <Button onClick={() => this.closeItem()}>Close</Button>
             </Modal.Footer>
            </Modal.Dialog>
@@ -44,12 +54,18 @@ class Initiative extends Component {
         >
           {item.location}
           {item.author}
+          Likes: {item.likes}
+          Joins: {item.joins}
         </ListGroupItem>
         {this.state.showDetails && this.renderModal()}
       </div>
     )
   }
 
+}
+
+Initiative.defaultProps = {
+  item: {},
 }
 
 export default Initiative

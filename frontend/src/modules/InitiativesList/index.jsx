@@ -10,6 +10,7 @@ class InitiativesList extends Component {
       initiative => <Initiative
                       key={initiative.name}
                       item={initiative}
+                      react={(id, reaction) => this.props.reactToInitiative(id, reaction)}
                     />
     )
   }
@@ -25,7 +26,7 @@ class InitiativesList extends Component {
 }
 
 InitiativesList.defaultProps = {
-  initiatives: []
+  initiatives: [],
 }
 
 export default InitiativesList

@@ -5,13 +5,38 @@ import './App.css'
 import AddInitiativeForm from './modules/AddInitiativeForm'
 import InitiativesList from './modules/InitiativesList'
 
+const initiativesById = (initiatives = []) =>
+  initiatives.reduce((obj, init) => ({ ...obj, [init.id]: init }), {})
+
+
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      initiatives: [],
+      initiatives: {
+        1: { name: 'hello' }
+      },
       addItemOpen: false,
     }
+  }
+
+  componentDidMount() {
+    return new Promise((resolve, reject) => {
+      fetch('/api/initiatives', {
+        headers: { 'Accept': 'application/json' },
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.json().then(json => {
+            const initiatives = json._embedded.initiatives
+            this.setState({ initiatives: initiativesById(initiatives) })
+          })
+        } else  {
+          console.log(response.status)
+        }
+      })
+      .catch((error) => console.log('error:', JSON.stringify(error)))
+    })
   }
 
   addInitiative(initiative) {
@@ -24,9 +49,31 @@ class App extends Component {
         })
       .then(response => {
         if (response.ok) {
-          this.setState({
-            initiatives: [...this.state.initiatives, initiative],
-            addItemOpen: false,
+          return response.json().then(json => {
+            this.setState({
+              initiatives: {...this.state.initiatives, [json.id]: json },
+              addItemOpen: false,
+            })
+          })
+        } else  {
+          console.log(response.status)
+        }
+      })
+      .catch((error) => console.log('error:', JSON.stringify(error)))
+    })
+  }
+
+  reactToInitiative(id, reaction) {
+    return new Promise((resolve, reject) => {
+      fetch(`/api/initiatives/${id}/${reaction}`, {
+        method: 'POST'
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.json().then(json => {
+            this.setState({
+              initiatives: { ...this.state.initiatives, [id]: json },
+            })
           })
         } else  {
           console.log(response.status)
@@ -44,26 +91,11 @@ class App extends Component {
     this.setState({ addItemOpen: false })
   }
 
-  componentDidMount() {
-    return new Promise((resolve, reject) => {
-      fetch('/api/initiatives', {
-        headers: { 'Accept': 'application/json' },
-      })
-      .then(response => {
-        if (response.ok) {
-          return response.json().then(json => {
-            console.log(json)
-            this.setState({ initiatives: json._embedded.initiatives })
-          })
-        } else  {
-          console.log(response.status)
-        }
-      })
-      .catch((error) => console.log('error:', JSON.stringify(error)))
-    })
-  }
 
   render() {
+    const { initiatives } = this.state
+    const initiativesList = Object.keys(initiatives).map(key => initiatives[key])
+
     return (
       <span>
         <Jumbotron className='App-intro'>
@@ -76,7 +108,10 @@ class App extends Component {
         >
           Zgłość swoją inicjatywę!
         </Button>
-        <InitiativesList initiatives={this.state.initiatives} />
+        <InitiativesList
+          initiatives={initiativesList}
+          reactToInitiative={(id, reaction) => this.reactToInitiative(id, reaction)}
+        />
         {this.state.addItemOpen && <AddInitiativeForm
           onClose={()=> this.closeAddItemForm()}
           onSubmit={(initiative) => this.addInitiative(initiative)}
