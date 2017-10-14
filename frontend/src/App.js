@@ -100,7 +100,7 @@ class App extends Component {
       <span>
         <Jumbotron className='App-intro'>
           <header>
-            <h1 className="appTitle">zróbmy.waw.pl</h1>
+            <h1 className="appTitle">lokalsi.waw.pl</h1>
           </header>
         </Jumbotron>
         <Button
