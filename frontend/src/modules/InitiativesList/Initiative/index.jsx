@@ -24,7 +24,6 @@ class Initiative extends Component {
             </Modal.Header>
             <Modal.Body>
               <p>Lokalizacja: {item.location}</p>
-              <p>Kiedy? {item.time}</p>
               <p>Autor: {item.author}</p>
               <p>Opis: {item.description}</p>
               <a href={item.fbEvent}>Link do wydarzenia</a>
@@ -44,7 +43,6 @@ class Initiative extends Component {
           onClick={() => this.showItem()}
         >
           {item.location}
-          {item.time}
           {item.author}
         </ListGroupItem>
         {this.state.showDetails && this.renderModal()}

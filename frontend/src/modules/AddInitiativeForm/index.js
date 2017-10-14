@@ -42,11 +42,6 @@ class AddInitiativeForm extends Component {
             />
             <FormControl
               type='text'
-              placeholder='Czas'
-              onChange={(e) => this.handleChange('time', e.target.value)}
-            />
-            <FormControl
-              type='text'
               placeholder='Opis'
               onChange={(e) => this.handleChange('description', e.target.value)}
             />
@@ -54,6 +49,11 @@ class AddInitiativeForm extends Component {
               type='text'
               placeholder='Facebook event'
               onChange={(e) => this.handleChange('fbEvent', e.target.value)}
+            />
+            <FormControl
+              type='text'
+              placeholder='Inicjator'
+              onChange={(e) => this.handleChange('author', e.target.value)}
             />
           </FormGroup>
         </form>
