@@ -1,16 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 frontend/node_modules
-=======
-# Created by .ignore support plugin (hsz.mobi)
->>>>>>> Initialize Spring Boot app
-=======
-# Created by .ignore support plugin (hsz.mobi)
->>>>>>> Configure database, add first migration, add status endpoint
-=======
-# Created by .ignore support plugin (hsz.mobi)
-=======
-frontend/node_modules
->>>>>>> Add .gitignore
->>>>>>> Add .gitignore
+*.iml
+*.db
+.idea

@@ -9,6 +9,8 @@ spring:
       repositories:
         enabled: true
 
+server:
+  contextPath: /api
 flyway:
   locations:
     - classpath:/db/migration
