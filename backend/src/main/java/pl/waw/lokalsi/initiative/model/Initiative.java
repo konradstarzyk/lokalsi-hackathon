@@ -37,7 +37,7 @@ public class Initiative implements Serializable {
 	private Integer likes = 0;
 
 	@Column(name = "joins")
-	private Integer joins;
+	private Integer joins = 0;
 
 	public Long getId() {
 		return id;
