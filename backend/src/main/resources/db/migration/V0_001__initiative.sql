@@ -5,6 +5,8 @@ CREATE TABLE initiative (
   location        VARCHAR(255),
   author          VARCHAR(255),
   fb_event        VARCHAR(255),
+  lat             NUMERIC(2,16),
+  lon             NUMERIC(2,16),
   likes           INTEGER,
   joins           INTEGER,
   PRIMARY KEY (id)

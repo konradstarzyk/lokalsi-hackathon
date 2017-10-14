@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * Created by konrad on 14.10.2017.
@@ -38,6 +39,13 @@ public class Initiative implements Serializable {
 
 	@Column(name = "joins")
 	private Integer joins = 0;
+
+	@Column(name = "lat")
+	private BigDecimal lat;
+
+	@Column(name = "lon")
+	private BigDecimal lon;
+
 
 	public Long getId() {
 		return id;
@@ -109,5 +117,21 @@ public class Initiative implements Serializable {
 
 	public void setJoins(Integer joins) {
 		this.joins = joins;
+	}
+
+	public BigDecimal getLat() {
+		return lat;
+	}
+
+	public void setLat(BigDecimal lat) {
+		this.lat = lat;
+	}
+
+	public BigDecimal getLon() {
+		return lon;
+	}
+
+	public void setLon(BigDecimal lon) {
+		this.lon = lon;
 	}
 }
