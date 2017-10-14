@@ -27,7 +27,7 @@ class Initiative extends Component {
               <p>Kiedy? {item.time}</p>
               <p>Autor: {item.author}</p>
               <p>Opis: {item.description}</p>
-              <a href={item.event}>Link do wydarzenia</a>
+              <a href={item.fbEvent}>Link do wydarzenia</a>
             </Modal.Body>
             <Modal.Footer>
               <Button onClick={() => this.closeItem()}>Close</Button>

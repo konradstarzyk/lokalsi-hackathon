@@ -9,36 +9,24 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      initiatives: [
-        { name: 'Lodowisko',
-          description: 'Zróbmy razem lodowisko dla dzieciaków',
-          location: 'Warszawa Ursynów',
-          time: '28.12.2017',
-          author: 'Andrzej',
-          event: 'www.facebook.com',
-        },
-        { name: 'Piaskownica',
-          description: 'Przy ulicy Kubusia Puchatka lezy sporo piasku, może zrobilibyśmy z tego piaskownicę?',
-          location: 'Warszawa Mokotów',
-          time: 'Maj 2018',
-          author: 'Aneta',
-          event: 'www.facebook.com',
-        },
-        { name: 'Plac zabaw',
-          description: 'Posiadam sporo drewnianych elementów, z których można by zrobić plac zabaw dla dzieciaków. Zapraszam do kontaktu.',
-          location: 'Warszawa Targówek',
-          time: 'Czerwiec 2018',
-          author: 'Tomek',
-          event: 'www.facebook.com',
-        },
-      ],
+      initiatives: [],
       addItemOpen: false,
     }
   }
 
   addInitiative(initiative) {
-    this.setState({
-      initiatives: [...this.state.initiatives, initiative]
+    return new Promise((resolve, reject) => {
+      fetch('/api/initiatives', { method: 'POST', body: initiative })
+      .then(response => {
+        if (response.ok) {
+          this.setState({
+            initiatives: [...this.state.initiatives, initiative]
+          })
+        } else  {
+          console.log(response.status)
+        }
+      })
+      .catch((error) => console.log('error:', JSON.stringify(error)))
     })
   }
 
@@ -63,7 +51,7 @@ class App extends Component {
           console.log(response.status)
         }
       })
-      .catch((error) => console.log('api error:', JSON.stringify(error)))
+      .catch((error) => console.log('error:', JSON.stringify(error)))
     })
   }
 

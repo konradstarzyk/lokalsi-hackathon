@@ -53,7 +53,7 @@ class AddInitiativeForm extends Component {
             <FormControl
               type='text'
               placeholder='Facebook event'
-              onChange={(e) => this.handleChange('event', e.target.value)}
+              onChange={(e) => this.handleChange('fbEvent', e.target.value)}
             />
           </FormGroup>
         </form>
