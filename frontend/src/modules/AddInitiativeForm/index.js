@@ -82,24 +82,24 @@ class AddInitiativeForm extends Component {
             <div className="control">
               <div className="select">
                 <select onChange={(e) => this.handleChange('area', e.target.value)}>
-                  <option value="bemowo">Bemowo</option>
-                  <option value="bialoleka">Białołęka</option>
-                  <option value="bielany">Bielany</option>
-                  <option value="mokotow">Mokotów</option>
-                  <option value="ochota">Ochota</option>
-                  <option value="praga-poludnie">Praga-Południe</option>
-                  <option value="praga-polnoc">Praga-Północ</option>
-                  <option value="rembertow">Rembertów</option>
-                  <option value="srodmiescie">Śródmieście</option>
-                  <option value="targowek">Targówek</option>
-                  <option value="ursus">Ursus</option>
-                  <option value="ursynow">Ursynów</option>
-                  <option value="wawer">Wawer</option>
-                  <option value="wesola">Wesoła</option>
-                  <option value="wilanow">Wilanów</option>
-                  <option value="wlochy">Włochy</option>
-                  <option value="wola">Wola</option>
-                  <option value="zoliborz">Żoliborz</option>
+                  <option value="Bemowo">Bemowo</option>
+                  <option value="Białołęka">Białołęka</option>
+                  <option value="Bielany">Bielany</option>
+                  <option value="Mokotów">Mokotów</option>
+                  <option value="Ochota">Ochota</option>
+                  <option value="Praga-Południe">Praga-Południe</option>
+                  <option value="Praga-Północ">Praga-Północ</option>
+                  <option value="Rembertów">Rembertów</option>
+                  <option value="Śródmieście">Śródmieście</option>
+                  <option value="Targówek">Targówek</option>
+                  <option value="Ursus">Ursus</option>
+                  <option value="Ursynów">Ursynów</option>
+                  <option value="Wawer">Wawer</option>
+                  <option value="Wesoła">Wesoła</option>
+                  <option value="Wilanów">Wilanów</option>
+                  <option value="Włochy">Włochy</option>
+                  <option value="Wola">Wola</option>
+                  <option value="Żoliborz">Żoliborz</option>
                 </select>
               </div>
            </div>
