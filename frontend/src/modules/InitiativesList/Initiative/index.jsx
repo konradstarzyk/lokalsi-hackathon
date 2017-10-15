@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import InitiativesMap from '../../InitiativesMap'
+
 class Initiative extends Component {
 
   showItem() {
@@ -30,11 +32,17 @@ class Initiative extends Component {
               </header>
               <div className="card-content">
                 <div className="content">
-                  <p>{item.description}</p>
-                  <p>{item.time}</p>
-                  <a href={item.fbEvent}>Link do wydarzenia</a>
-                  <p>Lokalizacja: {item.location}</p>
                   <p className="title is-5">Author: {item.author}</p>
+                  <p>{item.description}</p>
+                  <InitiativesMap
+                    isMarkerShown
+                    googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyD92FYJXNHVPKIF_y6sZ79zl0ufqupLwx8"
+                    loadingElement={<div style={{ height: `100%` }} />}
+                    containerElement={<div style={{ height: `400px` }} />}
+                    mapElement={<div style={{ height: `100%` }} />}
+                    items={item.lat && item.lng ? [item] : []}
+                  />
+                  <a href={item.fbEvent}>Link do wydarzenia</a>
                 </div>
               </div>
               <footer className="card-footer">

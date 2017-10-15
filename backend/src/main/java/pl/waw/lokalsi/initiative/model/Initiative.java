@@ -1,10 +1,13 @@
 package pl.waw.lokalsi.initiative.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Created by konrad on 14.10.2017.
@@ -46,6 +49,9 @@ public class Initiative implements Serializable {
 	@Column(name = "lon")
 	private BigDecimal lon;
 
+	@JsonManagedReference
+	@OneToMany(mappedBy = "initiative")
+	private List<Photo> photos;
 
 	public Long getId() {
 		return id;
@@ -133,5 +139,13 @@ public class Initiative implements Serializable {
 
 	public void setLon(BigDecimal lon) {
 		this.lon = lon;
+	}
+
+	public List<Photo> getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(List<Photo> photos) {
+		this.photos = photos;
 	}
 }
