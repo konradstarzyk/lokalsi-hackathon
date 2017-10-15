@@ -24,7 +24,7 @@ class Initiative extends Component {
                 </figure>
               </div>
               <header className="card-header">
-                <p class="card-header-title">
+                <p className="card-header-title">
                   {item.name}
                 </p>
               </header>
