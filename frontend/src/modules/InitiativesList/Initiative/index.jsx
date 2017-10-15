@@ -35,18 +35,18 @@ class Initiative extends Component {
             </div>
             <div className="card-content">
               <div className="content">
-                <p className="submit-proposal-info">
+                {item.likes >= 10 && <p className="submit-proposal-info">
                   <span className="icon">
                     <i className="fa fa-check-square-o"></i>
                   </span>
                   <span>Możesz zgłosić tę inicjatywę do Budżetu Partycypacyjnego m.st.Warszawy</span>
-                </p>
-                <p className="proposal-submitted">
+                </p>}
+                {item.budgetProposal && <p className="proposal-submitted">
                   <span className="icon">
                     <i className="fa fa-check-square-o"></i>
                   </span>
                   <span>Inicjatywa została zgłoszona do Budżetu Partycypacyjnego m.st.Warszawy</span>
-                </p>
+                </p>}
                 {item.author && <p>Inicjator: {item.author}</p>}
                 {item.area && <p>Dzielnica: {item.area}</p>}
                 {item.description && <p>{item.description}</p>}
@@ -104,18 +104,18 @@ class Initiative extends Component {
             {item.name}
           </p>}
           {item.area && <p>{item.area}</p>}
-          <p className="submit-proposal-info">
+          {item.likes >= 10 && <p className="submit-proposal-info">
             <span className="icon">
               <i className="fa fa-check-square-o"></i>
             </span>
             <span>Zgłoś do budżetu</span>
-          </p>
-          <p className="proposal-submitted">
+          </p>}
+          {item.budgetProposal && <p className="proposal-submitted">
             <span className="icon">
               <i className="fa fa-check-square-o"></i>
             </span>
             <span>Zgłoszono do budżetu</span>
-          </p>
+          </p>}
           <p>{item.area}</p>
           <div className="reaction-wrapper">
             <p>
