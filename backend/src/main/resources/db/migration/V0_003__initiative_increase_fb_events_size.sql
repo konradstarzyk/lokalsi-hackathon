@@ -1,0 +1,1 @@
+ALTER TABLE initiative ALTER COLUMN fb_event TYPE VARCHAR(4000);
