@@ -1,7 +1,6 @@
 package pl.waw.lokalsi.initiative.repository;
 
 
-import com.sun.org.apache.xml.internal.security.Init;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import pl.waw.lokalsi.initiative.model.Initiative;
