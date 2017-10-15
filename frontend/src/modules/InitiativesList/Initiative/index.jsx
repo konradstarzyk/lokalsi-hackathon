@@ -75,7 +75,7 @@ class Initiative extends Component {
                   <i className="fa fa-users"></i>
                 </span>
               </a>
-              <a className="reaction-button button is-medium is-warning card-footer-item" onClick={() => this.props.react(item.id, 'submitBudgetProposal')}>
+              <a className="reaction-button button is-medium is-warning card-footer-item" onClick={() => this.props.react(item.id, 'budgetProposal')}>
                 <span>Zgłoś</span>
                 <span className="icon">
                   <i className="fa fa-check-square-o"></i>
