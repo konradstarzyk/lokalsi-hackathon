@@ -8,10 +8,21 @@ class AddInitiativeForm extends Component {
   constructor(props) {
     super(props)
     this.state = { item: {} }
+    this.onDrop = this.onDrop.bind(this)
+  }
+
+  onDrop(picture, e) {
+    console.log(picture, e)
+    this.setState({ picture })
+    e.preventDefault()
   }
 
   handleChange(attr, val) {
     this.setState({ item: {...this.state.item, [attr]: val }})
+  }
+
+  handleFileUpload(file) {
+    this.setState({ photo: file })
   }
 
   handleLocationChange(e) {
@@ -40,9 +51,9 @@ class AddInitiativeForm extends Component {
             </div>
           </div>
           <div className="field">
-            <label className="label">Czas</label>
+            <label className="label">Zdjęcie</label>
             <div className="control">
-              <input className="input" type="text" placeholder="Text input" onChange={(e) => this.handleChange('time', e.target.value)} />
+              <input type='file' onChange={(e) => this.handleFileUpload(e.target.files[0])} />
             </div>
           </div>
           <div className="field">
