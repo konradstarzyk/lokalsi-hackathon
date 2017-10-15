@@ -95,10 +95,8 @@ class Initiative extends Component {
     const { item } = this.props
     const photoSrc = item.photos && item.photos.length ? `http://lokalsi.waw.pl${item.photos[0].url}` : "http://bulma.io/images/placeholders/1280x960.png"
     return (
-      <div className="column is-one-quarter"
-        onClick={() => this.showItem()}
-      >
-        <div className="box">
+      <div className="column is-one-quarter" >
+        <div className="box" onClick={() => this.showItem()}>
           <figure className="image is-square">
             <img alt="Initiative" src={photoSrc} />
           </figure>
