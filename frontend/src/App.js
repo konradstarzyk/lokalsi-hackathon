@@ -84,7 +84,8 @@ class App extends Component {
             this.setState({
               initiatives: {
                 ...this.state.initiatives,
-                [id]: json },
+                [id]: { ...this.state.initiatives[id], photos: [`lokalsi.waw.pl${json.url}`] }
+              },
             })
           })
         } else  {
