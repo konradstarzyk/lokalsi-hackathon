@@ -20,6 +20,6 @@ a:hover {
   justify-content: space-between !important;
 }
 
-#add-initiative-form {
+#add-initiative-modal.modal {
   position: absolute !important;
 }
