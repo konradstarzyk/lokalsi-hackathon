@@ -78,7 +78,7 @@ public class InitiativeRestController {
 
 	@ResponseBody
 	@RequestMapping(value = "/initiatives/{id}/likes", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	private Initiative submitLike(@PathVariable("id") Long id) {
+	public Initiative submitLike(@PathVariable("id") Long id) {
 		Initiative initiative = initiativeRepository.getOne(id);
 		initiative.increaseLikes();
 		initiativeRepository.save(initiative);
@@ -88,7 +88,7 @@ public class InitiativeRestController {
 
 	@ResponseBody
 	@RequestMapping(value = "/initiatives/{id}/joins", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	private Initiative submitJoin(@PathVariable("id") Long id) {
+	public Initiative submitJoin(@PathVariable("id") Long id) {
 		Initiative initiative = initiativeRepository.getOne(id);
 		initiative.increaseJoins();
 		initiativeRepository.save(initiative);
