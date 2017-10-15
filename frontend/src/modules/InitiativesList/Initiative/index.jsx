@@ -31,7 +31,7 @@ class Initiative extends Component {
                   {item.name}
                 </p>
               </header>
-              <figure className="image is-4by3">
+              <figure className="image">
                 <img src={photoSrc} alt="Placeholder" />
               </figure>
             </div>
@@ -105,7 +105,7 @@ class Initiative extends Component {
           {item.name && <p className="card-header-title title is-4">
             {item.name}
           </p>}
-          {item.cost && <p>Szacowany koszt: {item.cost} PLN</p>}
+          {!!item.cost && <p>Szacowany koszt: {item.cost} PLN</p>}
           {item.area && <p>{item.area}</p>}
           {item.likes >= LIKES && !item.budgetProposal && <p className="submit-proposal-info">
             <span className="icon">
