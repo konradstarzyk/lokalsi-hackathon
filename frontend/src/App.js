@@ -6,6 +6,12 @@ import InitiativesMap from './modules/InitiativesMap'
 import logo from './assets/Lokalsi.png'
 import './App.css'
 
+const encodeFile = (file, name='file') => {
+  let formData = new FormData()
+  formData.append(name, file)
+  return formData
+}
+
 const initiativesById = (initiatives = []) =>
   initiatives.reduce((obj, init) => ({ ...obj, [init.id]: init }), {})
 
@@ -40,7 +46,7 @@ class App extends Component {
     })
   }
 
-  addInitiative(initiative) {
+  addInitiative(initiative, photo) {
     return new Promise((resolve, reject) => {
       fetch('/api/initiatives',
         {
@@ -54,6 +60,32 @@ class App extends Component {
             this.setState({
               initiatives: {...this.state.initiatives, [json.id]: json },
               addItemOpen: false,
+            })
+            photo ? this.uploadPhoto(photo, json.id) : null
+          })
+        } else  {
+          console.log(response.status)
+        }
+      })
+      .catch((error) => console.log('error:', JSON.stringify(error)))
+    })
+  }
+
+  uploadPhoto(photo, id) {
+    return new Promise((resolve, reject) => {
+      fetch(`/api/initiatives/${id}/photo`,
+        {
+          method: 'POST',
+          body: encodeFile(photo, photo.name),
+          headers: { 'Content-Type': 'application/json' }
+        })
+      .then(response => {
+        if (response.ok) {
+          return response.json().then(json => {
+            this.setState({
+              initiatives: {
+                ...this.state.initiatives,
+                [id]: json },
             })
           })
         } else  {

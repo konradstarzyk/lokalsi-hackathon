@@ -36,7 +36,7 @@ class AddInitiativeForm extends Component {
   }
 
   handleSubmit() {
-    this.props.onSubmit(this.state.item)
+    this.props.onSubmit(this.state.item, this.state.photo)
   }
 
   render() {
