@@ -6,8 +6,8 @@ class InitiativesList extends Component {
 
   renderInitiatives() {
     return this.props.initiatives.map(
-      initiative => <Initiative
-                      key={initiative.name}
+      (initiative, index) => <Initiative
+                      key={`${initiative.name}-${index}`}
                       item={initiative}
                       react={(id, reaction) => this.props.reactToInitiative(id, reaction)}
                       visible={this.props.visibleInitiative === initiative.id}

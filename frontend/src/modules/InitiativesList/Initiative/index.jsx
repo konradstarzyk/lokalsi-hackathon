@@ -35,16 +35,16 @@ class Initiative extends Component {
                 <div className="content">
                   <p className="title is-5">Author: {item.author}</p>
                   <p>{item.description}</p>
-                  <InitiativesMap
-                    isMarkerShown
-                    googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyD92FYJXNHVPKIF_y6sZ79zl0ufqupLwx8"
-                    loadingElement={<div style={{ height: `100%` }} />}
-                    containerElement={<div style={{ height: `400px` }} />}
-                    mapElement={<div style={{ height: `100%` }} />}
-                    items={item.lat && item.lng ? [item] : []}
-                  />
                   <a href={item.fbEvent}>Link do wydarzenia</a>
                 </div>
+                {this.props.visible && <InitiativesMap
+                  isMarkerShown
+                  googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyD92FYJXNHVPKIF_y6sZ79zl0ufqupLwx8"
+                  loadingElement={<div style={{ height: `400px` }} />}
+                  containerElement={<div style={{ height: `400px` }} />}
+                  mapElement={<div style={{ height: `400px` }} />}
+                  items={item.lat && item.lng ? [item] : []}
+                />}
               </div>
               <footer className="card-footer">
                 <a href="#" className="card-footer-item" onClick={(e) => this.closeItem(e)}>Zamknij</a>
