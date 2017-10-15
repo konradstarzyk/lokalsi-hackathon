@@ -105,7 +105,9 @@ class App extends Component {
         if (response.ok) {
           return response.json().then(json => {
             this.setState({
-              initiatives: { ...this.state.initiatives, [id]: json },
+              initiatives: { ...this.state.initiatives,
+                [id]: { ...this.state.initiatives[id], [reaction]: json[reaction] },
+              },
             })
           })
         } else  {
