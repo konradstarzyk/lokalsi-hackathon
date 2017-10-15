@@ -11,6 +11,16 @@ class AddInitiativeForm extends Component {
     this.onDrop = this.onDrop.bind(this)
   }
 
+  componentWillMount() {
+    document.body.style.overflow = 'hidden'
+    document.body.style.height = '100vh'
+  }
+
+  componentWillUnmount() {
+    document.body.style.overflow = ''
+    document.body.style.height = ''
+  }
+
   onDrop(picture, e) {
     this.setState({ picture })
     e.preventDefault()
