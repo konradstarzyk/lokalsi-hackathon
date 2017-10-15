@@ -1,6 +1,7 @@
 package pl.waw.lokalsi.initiative.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -49,7 +50,7 @@ public class Initiative implements Serializable {
 	@Column(name = "lon")
 	private BigDecimal lon;
 
-	@JsonManagedReference
+	@JsonIgnore
 	@OneToMany(mappedBy = "initiative")
 	private List<Photo> photos;
 

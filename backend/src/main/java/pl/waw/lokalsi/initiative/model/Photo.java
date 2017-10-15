@@ -19,7 +19,7 @@ public class Photo {
 	@Column(name = "id")
 	private Long id;
 
-	@JsonBackReference
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "initiative_id")
 	private Initiative initiative;
