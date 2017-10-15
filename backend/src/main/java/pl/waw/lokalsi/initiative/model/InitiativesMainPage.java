@@ -17,7 +17,7 @@ interface InitiativesMainPage {
 	String getDescription();
 	String getLocation();
 	String getAuthor();
-	Boolean isBudgetProposal();
+	Boolean getBudgetProposal();
 	BigDecimal getCost();
 	String getFbEvent();
 	Integer getLikes();

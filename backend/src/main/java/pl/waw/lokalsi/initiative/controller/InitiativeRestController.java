@@ -1,9 +1,15 @@
 package pl.waw.lokalsi.initiative.controller;
 
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ExtendedModelMap;
+import org.springframework.ui.Model;
+import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pl.waw.lokalsi.initiative.model.Initiative;
@@ -19,6 +25,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 /**
  * Created by konrad on 14.10.2017.
@@ -33,10 +40,10 @@ public class InitiativeRestController {
 	@Autowired
 	PhotoRepository photoRepository;
 
-	@Value("${budgetProposals.templatePath}")
-	String templateFilePath;
+	@Autowired
+	private Configuration freemarkerConfig;
 
-	@Value("${budgetProposals.targetPath}")
+	@Value("${budgetProposals.targetFilePath}")
 	String targetFilePath;
 
 	private String PHOTOS_PATH = "./photos";
@@ -75,10 +82,18 @@ public class InitiativeRestController {
 
 	@ResponseBody
 	@RequestMapping(value = "/initiatives/{id}/budgetProposal", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Initiative budgetProposal(@PathVariable("id") Long id) {
+	public Initiative budgetProposal(@PathVariable("id") Long id) throws IOException, TemplateException {
 		Initiative initiative = initiativeRepository.getOne(id);
 		initiative.submitBudgetProposal();
 		initiativeRepository.save(initiative);
+
+
+		List<Initiative> allByBudgetProposal = initiativeRepository.findAllByBudgetProposal(true);
+		Model model = new ExtendedModelMap().addAttribute("initiatives", allByBudgetProposal);
+
+		Template template = freemarkerConfig.getTemplate("projekty2d18_template.ftl");
+		String renderedTemplate = FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
+		Files.write(Paths.get(targetFilePath), renderedTemplate.getBytes());
 
 		return initiative;
 	}

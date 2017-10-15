@@ -20,9 +20,7 @@ class App extends Component {
     super(props)
     this.state = {
       visibleInitiative: null,
-      initiatives: {
-        1: { name: 'hello' }
-      },
+      initiatives: {},
       addItemOpen: false,
     }
   }

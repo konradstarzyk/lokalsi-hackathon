@@ -1,3 +1,3 @@
 budgetProposals:
-  templatePath: /var/www/app.twojbudzet.um.warszawa.pl/projekty2d18_template.html
-  targetPath: /var/www/app.twojbudzet.um.warszawa.pl/projekty2d18.html
+  templateDir: /var/www/app.twojbudzet.um.warszawa.pl
+  targetFilePath: /Users/konrad/workspaces/wawcode/app.twojbudzet.um.warszawa.pl/projekty2d18.html
