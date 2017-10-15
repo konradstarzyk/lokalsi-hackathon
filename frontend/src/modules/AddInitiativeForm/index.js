@@ -66,31 +66,41 @@ class AddInitiativeForm extends Component {
           <div className="field">
             <label className="label">Nazwa inicjatywy</label>
             <div className="control">
-              <input className="input" type="text" placeholder="Nazwa" onChange={(e) => this.handleChange('name', e.target.value)} />
+              <input
+                onFocus={() => document.body.style.height = window.innerHeight + 'px'} onBlur={() => document.body.style.height = ''}
+                className="input" type="text" placeholder="Nazwa" onChange={(e) => this.handleChange('name', e.target.value)} />
             </div>
           </div>
           <div className="field">
             <label className="label">Szacowany koszt (PLN)</label>
             <div className="control">
-              <input className="input" type="number" placeholder="PLN" onChange={(e) => this.handleChange('cost', e.target.value)} />
+              <input
+                onFocus={() => document.body.style.height = window.innerHeight + 'px'} onBlur={() => document.body.style.height = ''}
+                className="input" type="number" placeholder="PLN" onChange={(e) => this.handleChange('cost', e.target.value)} />
             </div>
           </div>
           <div className="field">
             <label className="label">Opis</label>
             <div className="control">
-              <input className="input" type="text" placeholder="Dodaj opis" onChange={(e) => this.handleChange('description', e.target.value)} />
+              <input
+                onFocus={() => document.body.style.height = window.innerHeight + 'px'} onBlur={() => document.body.style.height = ''}
+                className="input" type="text" placeholder="Dodaj opis" onChange={(e) => this.handleChange('description', e.target.value)} />
             </div>
           </div>
           <div className="field">
             <label className="label">Facebook event</label>
             <div className="control">
-              <input className="input" type="text" placeholder="Event link" onChange={(e) => this.handleChange('event', e.target.value)} />
+              <input
+                onFocus={() => document.body.style.height = window.innerHeight + 'px'} onBlur={() => document.body.style.height = ''}
+                className="input" type="text" placeholder="Event link" onChange={(e) => this.handleChange('event', e.target.value)} />
             </div>
            </div>
           <div className="field">
             <label className="label">Inicjator</label>
             <div className="control">
-              <input className="input" type="text" placeholder="Autor inicjatywy" onChange={(e) => this.handleChange('author', e.target.value)} />
+              <input
+                onFocus={() => document.body.style.height = window.innerHeight + 'px'} onBlur={() => document.body.style.height = ''}
+                className="input" type="text" placeholder="Autor inicjatywy" onChange={(e) => this.handleChange('author', e.target.value)} />
            </div>
           </div>
           <div className="field">
