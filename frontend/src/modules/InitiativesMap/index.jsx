@@ -4,9 +4,9 @@ import { GoogleMap, Marker, withGoogleMap, withScriptjs } from 'react-google-map
 class InitiativesMap extends Component {
 
   renderMarkers() {
-    return this.props.items.map(item =>
+    return this.props.items.map((item, index) =>
       <Marker
-        key={`${item.lat}-${item.lng}-${item.name}`}
+        key={`${item.lat}-${item.lng}-${index}`}
         onClick={this.props.showItem
           ? () => this.props.showItem(item.id)
           : undefined }
@@ -16,12 +16,13 @@ class InitiativesMap extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <GoogleMap
         defaultZoom={11}
         defaultCenter={{ lat: 52.2297, lng: 21.0122 }}
         onClick={this.props.handleMapOnClick
-          ? (e) => this.props.handleMapOnClick(e)
+          ? this.props.handleMapOnClick
           : undefined
         }
       >
