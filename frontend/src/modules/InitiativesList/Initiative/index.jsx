@@ -47,10 +47,10 @@ class Initiative extends Component {
                   </span>
                   <span>Inicjatywa została zgłoszona do Budżetu Partycypacyjnego m.st.Warszawy</span>
                 </p>
-                <p>Inicjator: {item.author}</p>
-                <p>Dzielnica: {item.area}</p>
-                <p>{item.description}</p>
-                <a href={item.fbEvent}>Link do wydarzenia</a>
+                {item.author && <p>Inicjator: {item.author}</p>}
+                {item.area && <p>Dzielnica: {item.area}</p>}
+                {item.description && <p>{item.description}</p>}
+                {item.fbEvent && <a href={item.fbEvent}>Link do wydarzenia</a>}
               </div>
               {this.props.visible && <InitiativesMap
                 isMarkerShown
@@ -100,9 +100,10 @@ class Initiative extends Component {
           <figure className="image is-square">
             <img alt="Initiative" src={photoSrc} />
           </figure>
-          <p className="card-header-title title is-4">
+          {item.name && <p className="card-header-title title is-4">
             {item.name}
-          </p>
+          </p>}
+          {item.area && <p>{item.area}</p>}
           <p className="submit-proposal-info">
             <span className="icon">
               <i className="fa fa-check-square-o"></i>
@@ -121,13 +122,13 @@ class Initiative extends Component {
               <span className="icon">
                 <i className="fa fa-thumbs-up"></i>
               </span>
-              Likes: {item.likes}
+              Likes: {item.likes || 0}
             </p>
             <p>
               <span className="icon">
                 <i className="fa fa-users"></i>
               </span>
-              Joins: {item.joins}
+              Joins: {item.joins || 0}
             </p>
           </div>
         </div>
