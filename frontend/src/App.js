@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
-import { Button, Jumbotron } from 'react-bootstrap';
-import './App.css'
 
 import AddInitiativeForm from './modules/AddInitiativeForm'
 import InitiativesList from './modules/InitiativesList'
 import InitiativesMap from './modules/InitiativesMap'
+import logo from './assets/Lokalsi.png'
+import './App.css'
 
 const initiativesById = (initiatives = []) =>
   initiatives.reduce((obj, init) => ({ ...obj, [init.id]: init }), {})
-
 
 class App extends Component {
   constructor(props) {
@@ -89,36 +88,30 @@ class App extends Component {
     this.setState({ addItemOpen: true })
   }
 
-  closeAddItemForm() {
+  closeAddItemForm(e) {
+    e.stopPropagation()
     this.setState({ addItemOpen: false })
+    document.getElementsByClassName("is-active")[0].classList.remove("is-active")
   }
-
 
   render() {
     const { initiatives } = this.state
     const initiativesList = Object.keys(initiatives).map(key => initiatives[key])
 
     return (
-      <span>
-        <Jumbotron className='App-intro'>
-          <header>
-            <h1 className="appTitle">lokalsi.waw.pl</h1>
-          </header>
-        </Jumbotron>
-        <Button
-          onClick={() => this.openAddItemForm()}
-        >
-          Zgłość swoją inicjatywę!
-        </Button>
-        <InitiativesMap
-          isMarkerShown
-          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyD92FYJXNHVPKIF_y6sZ79zl0ufqupLwx8"
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `400px`, width: `90%`, margin: 'auto' }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-          items={initiativesList}
-          showItem={(id) => this.setState({ visibleInitiative: id })}
-        />
+      <div>
+        <section className="hero has-bg-image">
+          <div className="hero-body">
+            <div className="container">
+              <figure id="logo" className="image">
+                <img alt="Initiative" src={logo} />
+              </figure>
+              <a id="add-initiative-button" className="button is-link is-large pull-right" onClick={() => this.openAddItemForm()}>
+                Zgłość swoją inicjatywę!
+              </a>
+            </div>
+          </div>
+        </section>
         <InitiativesList
           initiatives={initiativesList}
           reactToInitiative={(id, reaction) => this.reactToInitiative(id, reaction)}
@@ -126,12 +119,23 @@ class App extends Component {
           showItem={(id) => this.setState({ visibleInitiative: id })}
           closeItem={() => this.setState({ visibleInitiative: null })}
         />
-        {this.state.addItemOpen && <AddInitiativeForm
-          onClose={()=> this.closeAddItemForm()}
-          onSubmit={(initiative) => this.addInitiative(initiative)}
-        />}
-      </span>
-    );
+        <InitiativesMap
+          isMarkerShown
+          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyD92FYJXNHVPKIF_y6sZ79zl0ufqupLwx8"
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div className="container" style={{ height: `400px`, width: `90%`, margin: 'auto' }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+          items={initiativesList}
+          showItem={(id) => this.setState({ visibleInitiative: id })}
+        />
+        {this.state.addItemOpen &&
+          <AddInitiativeForm
+            onClose={(e)=> this.closeAddItemForm(e)}
+            onSubmit={(initiative) => this.addInitiative(initiative)}
+          />
+        }
+      </div>
+    )
   }
 }
 

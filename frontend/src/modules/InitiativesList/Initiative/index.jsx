@@ -1,63 +1,73 @@
 import React, { Component } from 'react'
-import { Button, ListGroupItem, Modal } from 'react-bootstrap'
 
 class Initiative extends Component {
 
-  constructor(props) {
-    super(props)
-    this.state = { showDetails: false }
-  }
-
   showItem() {
-    this.props.showItem(this.props.item.id)
+    document.getElementById("modal").classList.add("is-active")
   }
 
-  closeItem() {
-    this.props.closeItem()
+  closeItem(e) {
+    e.stopPropagation()
+    document.getElementsByClassName("is-active")[0].classList.remove("is-active")
+    this.props.showItem(this.props.item.id)
   }
 
   renderModal() {
     const { item } = this.props
-    return <Modal.Dialog>
-            <Modal.Header>
-              <Modal.Title>{item.name}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <p>Lokalizacja: {item.location}</p>
-              <p>Autor: {item.author}</p>
-              <p>Opis: {item.description}</p>
-              <a href={item.fbEvent}>Link do wydarzenia</a>
-            </Modal.Body>
-            <Modal.Footer>
-              <button
-                onClick={() => this.props.react(item.id, 'likes')}
-              >
-                Like
-              </button>
-              <button
-                onClick={() => this.props.react(item.id, 'joins')}
-              >
-                Join
-              </button>
-              <Button onClick={() => this.closeItem()}>Close</Button>
-            </Modal.Footer>
-           </Modal.Dialog>
+    return (
+        <div id="modal" className="modal">
+          <div className="modal-background"></div>
+          <div className="modal-content box">
+            <div className="card">
+              <div className="card-image">
+                <figure className="image is-4by3">
+                  <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image" />
+                </figure>
+              </div>
+              <header className="card-header">
+                <p class="card-header-title">
+                  {item.name}
+                </p>
+              </header>
+              <div className="card-content">
+                <div className="content">
+                  <p>{item.description}</p>
+                  <p>{item.time}</p>
+                  <a href={item.fbEvent}>Link do wydarzenia</a>
+                  <p>Lokalizacja: {item.location}</p>
+                  <p className="title is-5">Author: {item.author}</p>
+                </div>
+              </div>
+              <footer className="card-footer">
+                <a href="#" className="card-footer-item" onClick={(e) => this.closeItem(e)}>Zamknij</a>
+                <a href="#" className="card-footer-item" onClick={() => this.props.react(item.id, 'likes')}>Like</a>
+                <a href="#" className="card-footer-item" onClick={() => this.props.react(item.id, 'joins')}>Join</a>
+              </footer>
+            </div>
+          </div>
+          <button className="modal-close is-large" aria-label="close" onClick={(e) => this.closeItem(e)}></button>
+        </div>
+      )
   }
 
   render() {
     const { item } = this.props
     return (
-      <div>
-        <ListGroupItem
-          header={item.name}
-          onClick={() => this.showItem()}
-        >
-          {item.location}
-          {item.author}
-          Likes: {item.likes}
-          Joins: {item.joins}
-        </ListGroupItem>
-        {this.props.visible && this.renderModal()}
+      <div className="column is-one-quarter"
+        header={item.name}
+        onClick={() => this.showItem()}
+      >
+        <div className="box">
+          <figure className="image is-square">
+            <img alt="Initiative" src={item.image} />
+          </figure>
+          <strong>{item.location}</strong>
+          <p>{item.time}</p>
+          <p>{item.author}</p>
+          <p>Likes: {item.likes}</p>
+          <p>Joins: {item.joins}</p>
+        </div>
+        {this.renderModal()}
       </div>
     )
   }
