@@ -48,8 +48,8 @@ public class Initiative implements Serializable {
 	private String fbEvent;
 
 	@Getter @Setter
-	@Column(name = "proposal_submitted")
-	private Boolean proposalSubmitted;
+	@Column(name = "budget_proposal")
+	private Boolean budgetProposal;
 
 	@Getter @Setter
 	@Column(name = "likes")
@@ -82,6 +82,6 @@ public class Initiative implements Serializable {
 
 
 	public void submitBudgetProposal() {
-		proposalSubmitted = true;
+		budgetProposal = true;
 	}
 }

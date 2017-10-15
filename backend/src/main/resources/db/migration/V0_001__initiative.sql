@@ -8,7 +8,7 @@ CREATE TABLE initiative (
   fb_event            VARCHAR(255),
   lat                 NUMERIC(18,16),
   lng                 NUMERIC(18,16),
-  proposal_submitted  BOOLEAN,
+  budget_proposal     BOOLEAN,
   likes               INTEGER,
   joins               INTEGER,
   PRIMARY KEY (id)

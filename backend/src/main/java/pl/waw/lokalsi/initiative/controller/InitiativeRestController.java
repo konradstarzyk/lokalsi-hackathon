@@ -67,8 +67,8 @@ public class InitiativeRestController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/initiatives/{id}/submitBudgetProposal", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Initiative submitBudgetProposalLike(@PathVariable("id") Long id) {
+	@RequestMapping(value = "/initiatives/{id}/budgetProposal", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public Initiative budgetProposal(@PathVariable("id") Long id) {
 		Initiative initiative = initiativeRepository.getOne(id);
 		initiative.submitBudgetProposal();
 		initiativeRepository.save(initiative);
