@@ -58,7 +58,7 @@ class Initiative extends Component {
       >
         <div className="box">
           <figure className="image is-square">
-            <img alt="Initiative" src={item.image} />
+            <img alt="Initiative" src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image" />
           </figure>
           <strong>{item.location}</strong>
           <p>{item.time}</p>
