@@ -8,7 +8,7 @@ import './App.css'
 
 const encodeFile = (file, name='file') => {
   let formData = new FormData()
-  formData.append(name, file)
+  formData.append('file', file)
   return formData
 }
 
@@ -77,7 +77,6 @@ class App extends Component {
         {
           method: 'POST',
           body: encodeFile(photo, photo.name),
-          headers: { 'Content-Type': 'application/json' }
         })
       .then(response => {
         if (response.ok) {
@@ -163,7 +162,7 @@ class App extends Component {
         {this.state.addItemOpen &&
           <AddInitiativeForm
             onClose={(e)=> this.closeAddItemForm(e)}
-            onSubmit={(initiative) => this.addInitiative(initiative)}
+            onSubmit={(initiative, photo) => this.addInitiative(initiative, photo)}
           />
         }
       </div>
