@@ -92,7 +92,7 @@ class AddInitiativeForm extends Component {
             <div className="control">
               <input
                 onFocus={() => document.body.style.height = window.innerHeight + 'px'} onBlur={() => document.body.style.height = ''}
-                className="input" type="text" placeholder="Event link" onChange={(e) => this.handleChange('event', e.target.value)} />
+                className="input" type="text" placeholder="Event link" onChange={(e) => this.handleChange('fbEvent', e.target.value)} />
             </div>
            </div>
           <div className="field">
