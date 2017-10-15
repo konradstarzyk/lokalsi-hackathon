@@ -16,7 +16,6 @@ class InitiativesMap extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <GoogleMap
         defaultZoom={11}

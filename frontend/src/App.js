@@ -61,10 +61,10 @@ class App extends Component {
               initiatives: {...this.state.initiatives, [json.id]: json },
               addItemOpen: false,
             })
-            photo ? this.uploadPhoto(photo, json.id) : null
+            return photo ? this.uploadPhoto(photo, json.id) : null
           })
         } else  {
-          console.log(response.status)
+          return console.log(response.status)
         }
       })
       .catch((error) => console.log('error:', JSON.stringify(error)))
