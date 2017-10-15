@@ -7,12 +7,11 @@ class AddInitiativeForm extends Component {
 
   constructor(props) {
     super(props)
-    this.state = { item: {} }
+    this.state = { item: {}, photo: null }
     this.onDrop = this.onDrop.bind(this)
   }
 
   onDrop(picture, e) {
-    console.log(picture, e)
     this.setState({ picture })
     e.preventDefault()
   }

@@ -8,7 +8,7 @@ import './App.css'
 
 const encodeFile = (file, name='file') => {
   let formData = new FormData()
-  formData.append(name, file)
+  formData.append('file', file)
   return formData
 }
 
@@ -27,24 +27,24 @@ class App extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   return new Promise((resolve, reject) => {
-  //     fetch('/api/initiatives', {
-  //       headers: { 'Accept': 'application/json' },
-  //     })
-  //     .then(response => {
-  //       if (response.ok) {
-  //         return response.json().then(json => {
-  //           const initiatives = json._embedded.initiatives
-  //           this.setState({ initiatives: initiativesById(initiatives) })
-  //         })
-  //       } else  {
-  //         console.log(response.status)
-  //       }
-  //     })
-  //     .catch((error) => console.log('error:', JSON.stringify(error)))
-  //   })
-  // }
+  componentDidMount() {
+    return new Promise((resolve, reject) => {
+      fetch('/api/initiatives?projection=mainPage', {
+        headers: { 'Accept': 'application/json' },
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.json().then(json => {
+            const initiatives = json._embedded.initiatives
+            this.setState({ initiatives: initiativesById(initiatives) })
+          })
+        } else  {
+          console.log(response.status)
+        }
+      })
+      .catch((error) => console.log('error:', JSON.stringify(error)))
+    })
+  }
 
   addInitiative(initiative, photo) {
     return new Promise((resolve, reject) => {
@@ -61,10 +61,10 @@ class App extends Component {
               initiatives: {...this.state.initiatives, [json.id]: json },
               addItemOpen: false,
             })
-            photo ? this.uploadPhoto(photo, json.id) : null
+            return photo ? this.uploadPhoto(photo, json.id) : null
           })
         } else  {
-          console.log(response.status)
+          return console.log(response.status)
         }
       })
       .catch((error) => console.log('error:', JSON.stringify(error)))
@@ -77,7 +77,6 @@ class App extends Component {
         {
           method: 'POST',
           body: encodeFile(photo, photo.name),
-          headers: { 'Content-Type': 'application/json' }
         })
       .then(response => {
         if (response.ok) {
@@ -163,7 +162,7 @@ class App extends Component {
         {this.state.addItemOpen &&
           <AddInitiativeForm
             onClose={(e)=> this.closeAddItemForm(e)}
-            onSubmit={(initiative) => this.addInitiative(initiative)}
+            onSubmit={(initiative, photo) => this.addInitiative(initiative, photo)}
           />
         }
       </div>
