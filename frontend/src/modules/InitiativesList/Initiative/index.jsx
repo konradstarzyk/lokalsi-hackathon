@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import InitiativesMap from '../../InitiativesMap'
 import './styles.css'
 
+const LIKES = 10
+
 class Initiative extends Component {
 
   showItem() {
@@ -35,7 +37,7 @@ class Initiative extends Component {
             </div>
             <div className="card-content">
               <div className="content">
-                {item.likes >= 10 && <p className="submit-proposal-info">
+                {item.likes >= LIKES && !item.budgetProposal && <p className="submit-proposal-info">
                   <span className="icon">
                     <i className="fa fa-check-square-o"></i>
                   </span>
@@ -75,12 +77,12 @@ class Initiative extends Component {
                   <i className="fa fa-users"></i>
                 </span>
               </a>
-              <a className="reaction-button button is-medium is-warning card-footer-item" onClick={() => this.props.react(item.id, 'budgetProposal')}>
+              {item.likes >= LIKES && !item.budgetProposal && <a className="reaction-button button is-medium is-warning card-footer-item" onClick={() => this.props.react(item.id, 'budgetProposal')}>
                 <span>Zgłoś</span>
                 <span className="icon">
                   <i className="fa fa-check-square-o"></i>
                 </span>
-              </a>
+              </a>}
             </footer>
           </div>
         </div>
@@ -104,7 +106,7 @@ class Initiative extends Component {
             {item.name}
           </p>}
           {item.area && <p>{item.area}</p>}
-          {item.likes >= 10 && <p className="submit-proposal-info">
+          {item.likes >= LIKES && !item.budgetProposal && <p className="submit-proposal-info">
             <span className="icon">
               <i className="fa fa-check-square-o"></i>
             </span>
