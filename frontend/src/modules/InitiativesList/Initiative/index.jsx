@@ -102,7 +102,7 @@ class Initiative extends Component {
           <figure className="image is-square">
             <img alt="Initiative" src={photoSrc} />
           </figure>
-          {item.name && <p className="card-header-title title is-4">
+          {item.name && <p className="card-header-title title is-5">
             {item.name}
           </p>}
           {!!item.cost && <p>Szacowany koszt: {item.cost} PLN</p>}
