@@ -19,3 +19,7 @@ a:hover {
 .space-between {
   justify-content: space-between !important;
 }
+
+#add-initiative-form {
+  position: absolute !important;
+}
