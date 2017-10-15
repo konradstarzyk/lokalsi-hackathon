@@ -47,9 +47,9 @@ class Initiative extends Component {
                 />}
               </div>
               <footer className="card-footer">
-                <a href="#" className="card-footer-item" onClick={(e) => this.closeItem(e)}>Zamknij</a>
-                <a href="#" className="card-footer-item" onClick={() => this.props.react(item.id, 'likes')}>Like</a>
-                <a href="#" className="card-footer-item" onClick={() => this.props.react(item.id, 'joins')}>Join</a>
+                <a className="card-footer-item" onClick={(e) => this.closeItem(e)}>Zamknij</a>
+                <a className="card-footer-item" onClick={() => this.props.react(item.id, 'likes')}>Like</a>
+                <a className="card-footer-item" onClick={() => this.props.react(item.id, 'joins')}>Join</a>
               </footer>
             </div>
           </div>
