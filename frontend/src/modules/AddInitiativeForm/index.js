@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ImageUploader from 'react-images-upload'
 
 import InitiativesMap from '../InitiativesMap'
 import './styles.css'
@@ -45,15 +46,19 @@ class AddInitiativeForm extends Component {
         <div className="modal-background"></div>
         <div className="modal-content box">
           <div className="field">
+            <label className="label">Zdjęcie</label>
+            <ImageUploader
+              withIcon={false}
+              buttonText='Wybierz zdjęcie'
+              onChange={(files) => this.handleFileUpload(files[0])}
+              imgExtension={['.jpg', '.gif', '.png', '.gif']}
+              maxFileSize={5242880}
+            />
+          </div>
+          <div className="field">
             <label className="label">Nazwa inicjatywy</label>
             <div className="control">
               <input className="input" type="text" placeholder="" onChange={(e) => this.handleChange('name', e.target.value)} />
-            </div>
-          </div>
-          <div className="field">
-            <label className="label">Zdjęcie</label>
-            <div className="control">
-              <input type='file' onChange={(e) => this.handleFileUpload(e.target.files[0])} />
             </div>
           </div>
           <div className="field">

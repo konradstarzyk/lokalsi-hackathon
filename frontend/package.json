@@ -9,6 +9,7 @@
     "react-bootstrap": "^0.31.3",
     "react-dom": "^15.5.0",
     "react-google-maps": "^8.5.0",
+    "react-images-upload": "^1.1.1",
     "react-scripts": "1.0.14"
   },
   "scripts": {
