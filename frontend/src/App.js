@@ -138,8 +138,8 @@ class App extends Component {
               <figure id="logo" className="image">
                 <img alt="Initiative" src={logo} />
               </figure>
-              <a id="add-initiative-button" className="button is-link is-large pull-right" onClick={() => this.openAddItemForm()}>
-                Zgłość swoją inicjatywę!
+              <a id="add-initiative-button" className="button is-large pull-right" onClick={() => this.openAddItemForm()}>
+                Zgłoś swoją inicjatywę!
               </a>
             </div>
           </div>

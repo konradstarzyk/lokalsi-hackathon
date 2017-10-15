@@ -53,7 +53,6 @@ class Initiative extends Component {
     const { item } = this.props
     return (
       <div className="column is-one-quarter"
-        header={item.name}
         onClick={() => this.showItem()}
       >
         <div className="box">

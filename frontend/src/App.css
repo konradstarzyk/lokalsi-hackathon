@@ -1,6 +1,4 @@
 .has-bg-image {
-  /*background: url('assets/warsaw.jpg') repeat center;*/
-  /*background-size: contain;*/
   background: url('assets/plakat.jpg') no-repeat center;
   background-size: cover;
 }
@@ -11,3 +9,10 @@
   margin-bottom: 1rem;
 }
 
+#add-initiative-button {
+  background-color: #2e6da4;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 0;
+}
