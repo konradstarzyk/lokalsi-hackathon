@@ -16,6 +16,8 @@ class Initiative extends Component {
 
   renderModal() {
     const { item } = this.props
+    const photoSrc = item.photos && item.photos.length ? `http://lokalsi.waw.pl${item.photos[0].url}` : "http://bulma.io/images/placeholders/1280x960.png"
+
     return (
       <div id="modal" className={`modal ${this.props.visible ? 'is-active' : ''}`}>
         <div className="modal-background"></div>
@@ -28,7 +30,7 @@ class Initiative extends Component {
                 </p>
               </header>
               <figure className="image is-4by3">
-                <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder" />
+                <img src={photoSrc} alt="Placeholder" />
               </figure>
             </div>
             <div className="card-content">
@@ -71,13 +73,14 @@ class Initiative extends Component {
 
   render() {
     const { item } = this.props
+    const photoSrc = item.photos && item.photos.length ? `http://lokalsi.waw.pl${item.photos[0].url}` : "http://bulma.io/images/placeholders/1280x960.png"
     return (
       <div className="column is-one-quarter"
         onClick={() => this.showItem()}
       >
         <div className="box">
           <figure className="image is-square">
-            <img alt="Initiative" src="http://bulma.io/images/placeholders/1280x960.png" />
+            <img alt="Initiative" src={photoSrc} />
           </figure>
           <p className="card-header-title title is-4">
             {item.name}
