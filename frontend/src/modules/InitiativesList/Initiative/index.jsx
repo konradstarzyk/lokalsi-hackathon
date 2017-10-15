@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import InitiativesMap from '../../InitiativesMap'
+import './styles.css'
 
 class Initiative extends Component {
 
@@ -22,7 +23,7 @@ class Initiative extends Component {
             <div className="card">
               <div className="card-image">
                 <figure className="image is-4by3">
-                  <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image" />
+                  <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder" />
                 </figure>
               </div>
               <header className="card-header">
@@ -65,13 +66,15 @@ class Initiative extends Component {
       >
         <div className="box">
           <figure className="image is-square">
-            <img alt="Initiative" src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image" />
+            <img alt="Initiative" src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder" />
           </figure>
           <strong>{item.location}</strong>
           <p>{item.time}</p>
           <p>{item.author}</p>
-          <p>Likes: {item.likes}</p>
-          <p>Joins: {item.joins}</p>
+          <div className="reaction-wrapper">
+            <p>Likes: {item.likes}</p>
+            <p>Joins: {item.joins}</p>
+          </div>
         </div>
         {this.renderModal()}
       </div>

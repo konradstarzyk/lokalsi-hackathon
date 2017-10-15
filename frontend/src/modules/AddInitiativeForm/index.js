@@ -79,6 +79,20 @@ class AddInitiativeForm extends Component {
               <input className="input" type="text" placeholder="Text input" onChange={(e) => this.handleChange('author', e.target.value)} />
            </div>
           </div>
+          <div className="field">
+            <label className="label">Wybierz lokalizację</label>
+            <div className="control">
+              <InitiativesMap
+                isMarkerShown
+                googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyD92FYJXNHVPKIF_y6sZ79zl0ufqupLwx8"
+                loadingElement={<div style={{ height: `100%` }} />}
+                containerElement={<div style={{ height: `400px` }} />}
+                mapElement={<div style={{ height: `100%` }} />}
+                handleMapOnClick={(e) => this.handleLocationChange(e)}
+                items={this.state.item.lat && this.state.item.lng ? [this.state.item] : []}
+              />
+           </div>
+          </div>
           <div className="field is-grouped space-between">
             <p className="control">
               <a className="button is-danger" onClick={(e) => this.props.onClose(e)}>Zamknij</a>
@@ -87,15 +101,7 @@ class AddInitiativeForm extends Component {
               <a className="button is-primary" onClick={() => this.handleSubmit()}>Zgłoś!</a>
             </p>
           </div>
-          <InitiativesMap
-            isMarkerShown
-            googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyD92FYJXNHVPKIF_y6sZ79zl0ufqupLwx8"
-            loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div style={{ height: `400px` }} />}
-            mapElement={<div style={{ height: `100%` }} />}
-            handleMapOnClick={(e) => this.handleLocationChange(e)}
-            items={this.state.item.lat && this.state.item.lng ? [this.state.item] : []}
-          />
+
         </div>
         <button className="modal-close is-large" aria-label="close" onClick={(e) => this.props.onClose(e)}></button>
       </div>
