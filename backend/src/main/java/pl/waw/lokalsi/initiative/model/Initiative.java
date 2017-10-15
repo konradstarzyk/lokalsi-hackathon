@@ -1,9 +1,8 @@
 package pl.waw.lokalsi.initiative.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -18,89 +17,51 @@ import java.util.List;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Initiative implements Serializable {
 
+	@Getter @Setter
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Long id;
 
+	@Getter @Setter
 	@Column(name = "name")
 	private String name;
 
+	@Getter @Setter
 	@Column(name = "description")
 	private String description;
 
+	@Getter @Setter
 	@Column(name = "location")
 	private String location;
 
+	@Getter @Setter
 	@Column(name = "author")
 	private String author;
 
+	@Getter @Setter
 	@Column(name = "fb_event")
 	private String fbEvent;
 
+	@Getter @Setter
 	@Column(name = "likes")
 	private Integer likes = 0;
 
+	@Getter @Setter
 	@Column(name = "joins")
 	private Integer joins = 0;
 
+	@Getter @Setter
 	@Column(name = "lat")
 	private BigDecimal lat;
 
-	@Column(name = "lon")
-	private BigDecimal lon;
+	@Getter @Setter
+	@Column(name = "lng")
+	private BigDecimal lng;
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "initiative")
+	@Getter @Setter
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "initiative")
 	private List<Photo> photos;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-
-	public String getFbEvent() {
-		return fbEvent;
-	}
-
-	public void setFbEvent(String fbEvent) {
-		this.fbEvent = fbEvent;
-	}
 
 	public void increaseLikes() {
 		likes = likes + 1;
@@ -110,43 +71,5 @@ public class Initiative implements Serializable {
 		joins = joins + 1;
 	}
 
-	public Integer getLikes() {
-		return likes;
-	}
 
-	public void setLikes(Integer likes) {
-		this.likes = likes;
-	}
-
-	public Integer getJoins() {
-		return joins;
-	}
-
-	public void setJoins(Integer joins) {
-		this.joins = joins;
-	}
-
-	public BigDecimal getLat() {
-		return lat;
-	}
-
-	public void setLat(BigDecimal lat) {
-		this.lat = lat;
-	}
-
-	public BigDecimal getLon() {
-		return lon;
-	}
-
-	public void setLon(BigDecimal lon) {
-		this.lon = lon;
-	}
-
-	public List<Photo> getPhotos() {
-		return photos;
-	}
-
-	public void setPhotos(List<Photo> photos) {
-		this.photos = photos;
-	}
 }
