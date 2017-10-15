@@ -89,8 +89,8 @@ class Initiative extends Component {
           <p>
             <span className="icon has-text-info">
               <i className="fa fa-info-circle"></i>
-              Zgłoś do budżetu partycypacyjnego
             </span>
+            <span className="is-info">Zgłoś do budżetu</span>
           </p>
           <div className="reaction-wrapper">
             <p>
