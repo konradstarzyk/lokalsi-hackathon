@@ -3,19 +3,18 @@ import React, { Component } from 'react'
 class Initiative extends Component {
 
   showItem() {
-    document.getElementById("modal").classList.add("is-active")
+    this.props.showItem(this.props.item.id)
   }
 
   closeItem(e) {
     e.stopPropagation()
-    document.getElementsByClassName("is-active")[0].classList.remove("is-active")
-    this.props.showItem(this.props.item.id)
+    this.props.closeItem()
   }
 
   renderModal() {
     const { item } = this.props
     return (
-        <div id="modal" className="modal">
+        <div id="modal" className={`modal ${this.props.visible ? 'is-active' : ''}`}>
           <div className="modal-background"></div>
           <div className="modal-content box">
             <div className="card">
