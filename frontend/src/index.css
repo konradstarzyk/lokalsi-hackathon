@@ -19,7 +19,3 @@ a:hover {
 .space-between {
   justify-content: space-between !important;
 }
-
-.is-info {
-  color: #209cee;
-}

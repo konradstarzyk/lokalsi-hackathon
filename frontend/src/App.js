@@ -27,24 +27,24 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    return new Promise((resolve, reject) => {
-      fetch('/api/initiatives?projection=mainPage', {
-        headers: { 'Accept': 'application/json' },
-      })
-      .then(response => {
-        if (response.ok) {
-          return response.json().then(json => {
-            const initiatives = json._embedded.initiatives
-            this.setState({ initiatives: initiativesById(initiatives) })
-          })
-        } else  {
-          console.log(response.status)
-        }
-      })
-      .catch((error) => console.log('error:', JSON.stringify(error)))
-    })
-  }
+  // componentDidMount() {
+  //   return new Promise((resolve, reject) => {
+  //     fetch('/api/initiatives?projection=mainPage', {
+  //       headers: { 'Accept': 'application/json' },
+  //     })
+  //     .then(response => {
+  //       if (response.ok) {
+  //         return response.json().then(json => {
+  //           const initiatives = json._embedded.initiatives
+  //           this.setState({ initiatives: initiativesById(initiatives) })
+  //         })
+  //       } else  {
+  //         console.log(response.status)
+  //       }
+  //     })
+  //     .catch((error) => console.log('error:', JSON.stringify(error)))
+  //   })
+  // }
 
   addInitiative(initiative, photo) {
     return new Promise((resolve, reject) => {
@@ -139,7 +139,7 @@ class App extends Component {
                 <img alt="Initiative" src={logo} />
               </figure>
               <a id="add-initiative-button" className="button is-large pull-right" onClick={() => this.openAddItemForm()}>
-                Zgłoś swoją inicjatywę!
+                Dodaj swoją inicjatywę!
               </a>
             </div>
           </div>

@@ -123,7 +123,7 @@ class AddInitiativeForm extends Component {
               <a className="button is-danger" onClick={(e) => this.props.onClose(e)}>Zamknij</a>
             </p>
             <p className="control">
-              <a className="button is-primary" onClick={() => this.handleSubmit()}>Zgłoś!</a>
+              <a className="button is-primary" onClick={() => this.handleSubmit()}>Dodaj!</a>
             </p>
           </div>
         </div>

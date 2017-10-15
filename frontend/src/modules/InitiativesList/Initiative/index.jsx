@@ -35,6 +35,12 @@ class Initiative extends Component {
             </div>
             <div className="card-content">
               <div className="content">
+                <p className="submit-proposal-info">
+                  <span className="icon">
+                    <i className="fa fa-check-square-o"></i>
+                  </span>
+                  <span>Możesz zgłosić tę inicjatywę do Budżetu Partycypacyjnego m.st.Warszawy</span>
+                </p>
                 <p>Inicjator: {item.author}</p>
                 <p>Dzielnica: {item.area}</p>
                 <p>{item.description}</p>
@@ -63,6 +69,12 @@ class Initiative extends Component {
                   <i className="fa fa-users"></i>
                 </span>
               </a>
+              <a className="reaction-button button is-medium is-warning card-footer-item" onClick={() => this.props.react(item.id, 'submitBudgetProposal')}>
+                <span>Zgłoś</span>
+                <span className="icon">
+                  <i className="fa fa-check-square-o"></i>
+                </span>
+              </a>
             </footer>
           </div>
         </div>
@@ -85,13 +97,13 @@ class Initiative extends Component {
           <p className="card-header-title title is-4">
             {item.name}
           </p>
-          <p>{item.area}</p>
-          <p>
-            <span className="icon has-text-info">
-              <i className="fa fa-info-circle"></i>
+          <p className="submit-proposal-info">
+            <span className="icon">
+              <i className="fa fa-check-square-o"></i>
             </span>
-            <span className="is-info">Zgłoś do budżetu</span>
+            <span>Zgłoś do budżetu</span>
           </p>
+          <p>{item.area}</p>
           <div className="reaction-wrapper">
             <p>
               <span className="icon">

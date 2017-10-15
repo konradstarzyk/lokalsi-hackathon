@@ -6,3 +6,12 @@
 .reaction-button .icon {
   padding: 0 1rem;
 }
+
+.submit-proposal-info {
+  color: orange;
+  padding-bottom: 0.5rem;
+}
+
+#modal .submit-proposal-info {
+  font-weight: bold;
+}
