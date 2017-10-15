@@ -9,6 +9,7 @@ CREATE TABLE initiative (
   lat                 NUMERIC(18,16),
   lng                 NUMERIC(18,16),
   budget_proposal     BOOLEAN,
+  cost                NUMERIC(10,2),
   likes               INTEGER,
   joins               INTEGER,
   PRIMARY KEY (id)

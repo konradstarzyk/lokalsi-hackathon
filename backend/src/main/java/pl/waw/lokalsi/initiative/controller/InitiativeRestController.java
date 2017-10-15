@@ -1,6 +1,7 @@
 package pl.waw.lokalsi.initiative.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +32,12 @@ public class InitiativeRestController {
 
 	@Autowired
 	PhotoRepository photoRepository;
+
+	@Value("${budgetProposals.templatePath}")
+	String templateFilePath;
+
+	@Value("${budgetProposals.targetPath}")
+	String targetFilePath;
 
 	private String PHOTOS_PATH = "./photos";
 

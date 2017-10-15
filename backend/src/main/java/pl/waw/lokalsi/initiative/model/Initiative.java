@@ -60,6 +60,10 @@ public class Initiative implements Serializable {
 	private Integer joins = 0;
 
 	@Getter @Setter
+	@Column(name = "cost")
+	private BigDecimal cost = BigDecimal.ZERO;
+
+	@Getter @Setter
 	@Column(name = "lat")
 	private BigDecimal lat;
 
