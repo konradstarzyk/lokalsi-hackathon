@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import ImageUploader from 'react-images-upload'
 
 import InitiativesMap from '../InitiativesMap'
-import './styles.css'
 
 class AddInitiativeForm extends Component {
 
@@ -101,7 +100,6 @@ class AddInitiativeForm extends Component {
               <a className="button is-primary" onClick={() => this.handleSubmit()}>Zgłoś!</a>
             </p>
           </div>
-
         </div>
         <button className="modal-close is-large" aria-label="close" onClick={(e) => this.props.onClose(e)}></button>
       </div>

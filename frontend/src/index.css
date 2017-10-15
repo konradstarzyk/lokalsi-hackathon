@@ -4,6 +4,18 @@ body {
   font-family: sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
 .label {
   text-align: left;
+}
+
+.space-between {
+  justify-content: space-between !important;
 }

@@ -27,24 +27,24 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    return new Promise((resolve, reject) => {
-      fetch('/api/initiatives', {
-        headers: { 'Accept': 'application/json' },
-      })
-      .then(response => {
-        if (response.ok) {
-          return response.json().then(json => {
-            const initiatives = json._embedded.initiatives
-            this.setState({ initiatives: initiativesById(initiatives) })
-          })
-        } else  {
-          console.log(response.status)
-        }
-      })
-      .catch((error) => console.log('error:', JSON.stringify(error)))
-    })
-  }
+  // componentDidMount() {
+  //   return new Promise((resolve, reject) => {
+  //     fetch('/api/initiatives', {
+  //       headers: { 'Accept': 'application/json' },
+  //     })
+  //     .then(response => {
+  //       if (response.ok) {
+  //         return response.json().then(json => {
+  //           const initiatives = json._embedded.initiatives
+  //           this.setState({ initiatives: initiativesById(initiatives) })
+  //         })
+  //       } else  {
+  //         console.log(response.status)
+  //       }
+  //     })
+  //     .catch((error) => console.log('error:', JSON.stringify(error)))
+  //   })
+  // }
 
   addInitiative(initiative, photo) {
     return new Promise((resolve, reject) => {
