@@ -29,7 +29,7 @@ class App extends Component {
 
   componentDidMount() {
     return new Promise((resolve, reject) => {
-      fetch('/api/initiatives', {
+      fetch('/api/initiatives?projection=mainPage', {
         headers: { 'Accept': 'application/json' },
       })
       .then(response => {
