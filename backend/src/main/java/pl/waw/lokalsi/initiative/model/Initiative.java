@@ -32,6 +32,10 @@ public class Initiative implements Serializable {
 	private String description;
 
 	@Getter @Setter
+	@Column(name = "area")
+	private String area;
+
+	@Getter @Setter
 	@Column(name = "location")
 	private String location;
 
@@ -42,6 +46,10 @@ public class Initiative implements Serializable {
 	@Getter @Setter
 	@Column(name = "fb_event")
 	private String fbEvent;
+
+	@Getter @Setter
+	@Column(name = "proposal_submitted")
+	private Boolean proposalSubmitted;
 
 	@Getter @Setter
 	@Column(name = "likes")
@@ -73,4 +81,7 @@ public class Initiative implements Serializable {
 	}
 
 
+	public void submitBudgetProposal() {
+		proposalSubmitted = true;
+	}
 }

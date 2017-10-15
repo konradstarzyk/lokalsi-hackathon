@@ -2,6 +2,7 @@ package pl.waw.lokalsi.initiative.model;
 
 import org.springframework.data.rest.core.config.Projection;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -13,6 +14,14 @@ interface InitiativesMainPage {
 	Long getId();
 
 	String getName();
+	String getDescription();
+	String getLocation();
+	String getAuthor();
+	String getFbEvent();
+	Integer getLikes();
+	Integer getJoins();
+	BigDecimal getLat();
+	BigDecimal getLng();
 
 	List<Photo> getPhotos();
 

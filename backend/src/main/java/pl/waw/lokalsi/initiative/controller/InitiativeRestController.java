@@ -57,6 +57,8 @@ public class InitiativeRestController {
 		return photo;
 	}
 
+
+
 	@RequestMapping(value="/photos/{photoId}", method = RequestMethod.GET, produces = "image/*")
 	public void getPhoto(@PathVariable Long photoId, HttpServletResponse response) throws IOException {
 		Photo photo = photoRepository.getOne(photoId);
@@ -64,6 +66,15 @@ public class InitiativeRestController {
 		Files.copy(path, response.getOutputStream());
 	}
 
+	@ResponseBody
+	@RequestMapping(value = "/initiatives/{id}/submitBudgetProposal", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public Initiative submitBudgetProposalLike(@PathVariable("id") Long id) {
+		Initiative initiative = initiativeRepository.getOne(id);
+		initiative.submitBudgetProposal();
+		initiativeRepository.save(initiative);
+
+		return initiative;
+	}
 
 	@ResponseBody
 	@RequestMapping(value = "/initiatives/{id}/likes", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
