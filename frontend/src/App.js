@@ -133,7 +133,7 @@ class App extends Component {
     return (
       <div>
         <section className="hero has-bg-image">
-          <div className="hero-body">
+          <div className="hero-body is-flex-mobile">
             <div className="container">
               <figure id="logo" className="image">
                 <img alt="Initiative" src={logo} />

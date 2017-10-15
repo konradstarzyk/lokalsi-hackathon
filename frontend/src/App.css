@@ -9,6 +9,12 @@
   margin-bottom: 1rem;
 }
 
+@media only screen and (max-width: 768px) {
+  #logo {
+    margin: 1rem auto;
+  }
+}
+
 #add-initiative-button {
   background-color: #2e6da4;
   color: white;
