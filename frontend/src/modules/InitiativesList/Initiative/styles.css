@@ -12,6 +12,10 @@
   padding-bottom: 0.5rem;
 }
 
-#modal .submit-proposal-info {
+.proposal-submitted {
+  color: green;
+}
+
+#modal .submit-proposal-info, #modal .proposal-submitted {
   font-weight: bold;
 }

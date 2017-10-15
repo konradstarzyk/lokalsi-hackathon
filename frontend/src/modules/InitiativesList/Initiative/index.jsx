@@ -41,6 +41,12 @@ class Initiative extends Component {
                   </span>
                   <span>Możesz zgłosić tę inicjatywę do Budżetu Partycypacyjnego m.st.Warszawy</span>
                 </p>
+                <p className="proposal-submitted">
+                  <span className="icon">
+                    <i className="fa fa-check-square-o"></i>
+                  </span>
+                  <span>Inicjatywa została zgłoszona do Budżetu Partycypacyjnego m.st.Warszawy</span>
+                </p>
                 <p>Inicjator: {item.author}</p>
                 <p>Dzielnica: {item.area}</p>
                 <p>{item.description}</p>
@@ -102,6 +108,12 @@ class Initiative extends Component {
               <i className="fa fa-check-square-o"></i>
             </span>
             <span>Zgłoś do budżetu</span>
+          </p>
+          <p className="proposal-submitted">
+            <span className="icon">
+              <i className="fa fa-check-square-o"></i>
+            </span>
+            <span>Zgłoszono do budżetu</span>
           </p>
           <p>{item.area}</p>
           <div className="reaction-wrapper">
