@@ -60,6 +60,7 @@ public class Initiative implements Serializable {
 	private BigDecimal lng;
 
 	@Getter @Setter
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "initiative")
 	private List<Photo> photos;
 

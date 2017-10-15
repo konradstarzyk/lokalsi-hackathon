@@ -24,6 +24,7 @@ public class Photo {
 	private Long id;
 
 	@Getter @Setter
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "initiative_id")
 	private Initiative initiative;
@@ -33,6 +34,7 @@ public class Photo {
 	@Column(name = "file_name")
 	private String fileName;
 
+	@JsonIgnore
 	@Getter @Setter
 	@Column(name = "path")
 	private String path;
