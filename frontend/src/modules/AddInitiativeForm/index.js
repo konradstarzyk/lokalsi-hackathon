@@ -56,25 +56,52 @@ class AddInitiativeForm extends Component {
           <div className="field">
             <label className="label">Nazwa inicjatywy</label>
             <div className="control">
-              <input className="input" type="text" placeholder="" onChange={(e) => this.handleChange('name', e.target.value)} />
+              <input className="input" type="text" placeholder="Nazwa" onChange={(e) => this.handleChange('name', e.target.value)} />
             </div>
           </div>
           <div className="field">
             <label className="label">Opis</label>
             <div className="control">
-              <input className="input" type="text" placeholder="Text input" onChange={(e) => this.handleChange('description', e.target.value)} />
+              <input className="input" type="text" placeholder="Dodaj opis" onChange={(e) => this.handleChange('description', e.target.value)} />
             </div>
           </div>
           <div className="field">
             <label className="label">Facebook event</label>
             <div className="control">
-              <input className="input" type="text" placeholder="Text input" onChange={(e) => this.handleChange('event', e.target.value)} />
+              <input className="input" type="text" placeholder="Event link" onChange={(e) => this.handleChange('event', e.target.value)} />
             </div>
            </div>
           <div className="field">
             <label className="label">Inicjator</label>
             <div className="control">
-              <input className="input" type="text" placeholder="Text input" onChange={(e) => this.handleChange('author', e.target.value)} />
+              <input className="input" type="text" placeholder="Autor inicjatywy" onChange={(e) => this.handleChange('author', e.target.value)} />
+           </div>
+          </div>
+          <div className="field">
+            <label className="label">Wybierz dzielnicę</label>
+            <div className="control">
+              <div className="select">
+                <select onChange={(e) => this.handleChange('area', e.target.value)}>
+                  <option value="bemowo">Bemowo</option>
+                  <option value="bialoleka">Białołęka</option>
+                  <option value="bielany">Bielany</option>
+                  <option value="mokotow">Mokotów</option>
+                  <option value="ochota">Ochota</option>
+                  <option value="praga-poludnie">Praga-Południe</option>
+                  <option value="praga-polnoc">Praga-Północ</option>
+                  <option value="rembertow">Rembertów</option>
+                  <option value="srodmiescie">Śródmieście</option>
+                  <option value="targowek">Targówek</option>
+                  <option value="ursus">Ursus</option>
+                  <option value="ursynow">Ursynów</option>
+                  <option value="wawer">Wawer</option>
+                  <option value="wesola">Wesoła</option>
+                  <option value="wilanow">Wilanów</option>
+                  <option value="wlochy">Włochy</option>
+                  <option value="wola">Wola</option>
+                  <option value="zoliborz">Żoliborz</option>
+                </select>
+              </div>
            </div>
           </div>
           <div className="field">

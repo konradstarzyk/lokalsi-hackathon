@@ -22,18 +22,19 @@ class Initiative extends Component {
         <div className="modal-content box">
           <div className="card">
             <div className="card-image">
+              <header className="card-header">
+                <p className="card-header-title title is-4">
+                  {item.name}
+                </p>
+              </header>
               <figure className="image is-4by3">
                 <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder" />
               </figure>
             </div>
-            <header className="card-header">
-              <p className="card-header-title">
-                {item.name}
-              </p>
-            </header>
             <div className="card-content">
               <div className="content">
-                <p className="title is-5">Author: {item.author}</p>
+                <p>Inicjator: {item.author}</p>
+                <p>Dzielnica: {item.area}</p>
                 <p>{item.description}</p>
                 <a href={item.fbEvent}>Link do wydarzenia</a>
               </div>
@@ -78,9 +79,10 @@ class Initiative extends Component {
           <figure className="image is-square">
             <img alt="Initiative" src="http://bulma.io/images/placeholders/1280x960.png" />
           </figure>
-          <strong>{item.location}</strong>
-          <p>{item.time}</p>
-          <p>{item.author}</p>
+          <p className="card-header-title title is-4">
+            {item.name}
+          </p>
+          <p>{item.area}</p>
           <div className="reaction-wrapper">
             <p>
               <span className="icon">
