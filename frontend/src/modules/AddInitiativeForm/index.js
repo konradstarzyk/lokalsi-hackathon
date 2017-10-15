@@ -60,6 +60,12 @@ class AddInitiativeForm extends Component {
             </div>
           </div>
           <div className="field">
+            <label className="label">Szacowany koszt (PLN)</label>
+            <div className="control">
+              <input className="input" type="number" placeholder="PLN" onChange={(e) => this.handleChange('cost', e.target.value)} />
+            </div>
+          </div>
+          <div className="field">
             <label className="label">Opis</label>
             <div className="control">
               <input className="input" type="text" placeholder="Dodaj opis" onChange={(e) => this.handleChange('description', e.target.value)} />

@@ -105,6 +105,7 @@ class Initiative extends Component {
           {item.name && <p className="card-header-title title is-4">
             {item.name}
           </p>}
+          {item.cost && <p>Szacowany koszt: {item.cost} PLN</p>}
           {item.area && <p>{item.area}</p>}
           {item.likes >= LIKES && !item.budgetProposal && <p className="submit-proposal-info">
             <span className="icon">
@@ -118,7 +119,6 @@ class Initiative extends Component {
             </span>
             <span>Zgłoszono do budżetu</span>
           </p>}
-          <p>{item.area}</p>
           <div className="reaction-wrapper">
             <p>
               <span className="icon">
