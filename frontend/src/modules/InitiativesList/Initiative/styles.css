@@ -19,3 +19,7 @@
 #modal .submit-proposal-info, #modal .proposal-submitted {
   font-weight: bold;
 }
+
+#thumbnail img {
+  object-fit: cover;
+}

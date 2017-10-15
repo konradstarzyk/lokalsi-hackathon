@@ -97,7 +97,7 @@ class Initiative extends Component {
     return (
       <div className="column is-one-quarter" >
         <div className="box" onClick={() => this.showItem()}>
-          <figure className="image is-square">
+          <figure id="thumbnail" className="image is-square">
             <img alt="Initiative" src={photoSrc} />
           </figure>
           {item.name && <p className="card-header-title title is-5">
